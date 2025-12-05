@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import CoverPage from './CoverPage';
 import AboutPage from './AboutPage';
 import QuotePage from './QuotePage';
@@ -30,7 +31,7 @@ interface QuotePreviewProps {
   bankInfo: string;
 }
 
-export default function QuotePreview({
+const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function QuotePreview({
   proposalTitle,
   solutionOverview,
   clientName,
@@ -47,9 +48,9 @@ export default function QuotePreview({
   warrantyPolicy,
   paymentTerms,
   bankInfo,
-}: QuotePreviewProps) {
+}, ref) {
   return (
-    <div className="w-full max-w-[210mm] mx-auto">
+    <div ref={ref} className="w-full mx-auto bg-white" style={{ width: '210mm' }}>
       {/* Page 1: Cover Page */}
       <CoverPage
         proposalTitle={proposalTitle}
@@ -81,4 +82,6 @@ export default function QuotePreview({
       />
     </div>
   );
-}
+});
+
+export default QuotePreview;

@@ -12,7 +12,7 @@ export default function TermsPage({
   bankInfo,
 }: TermsPageProps) {
   return (
-    <div className="page-break w-[210mm] h-[297mm] bg-white px-12 py-8 flex flex-col">
+    <div className="page-break w-[210mm] h-[297mm] bg-white p-12 flex flex-col">
       {/* Header */}
       <div className="mb-6">
         <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">

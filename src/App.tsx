@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FileText, Download } from 'lucide-react';
+import html2pdf from 'html2pdf.js';
 import QuoteForm from './components/QuoteForm';
 import QuotePreview from './components/QuotePreview';
 
@@ -54,9 +55,46 @@ function App() {
   };
 
   const total = items.reduce((sum, item) => sum + Number(item.cost || 0), 0);
+  const previewRef = useRef<HTMLDivElement>(null);
 
-  const handleDownloadPDF = () => {
-    window.print();
+  const handleDownloadPDF = async () => {
+    if (!previewRef.current) return;
+
+    const element = previewRef.current;
+    
+    const opt = {
+      margin: 0,
+      filename: `GLEADS_Proposal_${quoteNumber}_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`,
+      image: { type: 'jpeg' as const, quality: 0.98 },
+      html2canvas: { 
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        y: 0,
+        x: 0,
+        scrollY: 0,
+        scrollX: 0,
+        width: element.scrollWidth,
+        height: element.scrollHeight
+      },
+      jsPDF: { 
+        unit: 'mm' as const, 
+        format: 'a4' as const, 
+        orientation: 'portrait' as const
+      },
+      pagebreak: { 
+        mode: 'css',
+        avoid: '.page-break'
+      }
+    };
+
+    try {
+      await html2pdf().set(opt).from(element).save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Có lỗi khi tạo PDF. Vui lòng thử lại.');
+    }
   };
 
   return (
@@ -120,6 +158,7 @@ function App() {
           />
 
           <QuotePreview
+            ref={previewRef}
             proposalTitle={proposalTitle}
             solutionOverview={solutionOverview}
             clientName={clientName}
@@ -146,6 +185,14 @@ function App() {
           margin-bottom: 2rem;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
           position: relative;
+          background: white;
+        }
+        
+        /* Ensure all colors and backgrounds render correctly */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
         }
         
         @media print {
