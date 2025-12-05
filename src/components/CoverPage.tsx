@@ -18,7 +18,7 @@ export default function CoverPage({
       {/* Decorative Elements - Ogilvy style */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-red-50 to-transparent opacity-40"></div>
       <div className="absolute bottom-0 left-0 w-64 h-1 bg-gradient-to-r from-red-500 to-orange-500"></div>
-      
+
       {/* Content */}
       <div className="relative z-10">
         {/* Logo and Company Name */}

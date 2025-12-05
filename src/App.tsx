@@ -8,7 +8,7 @@ function App() {
   // Proposal Details
   const [proposalTitle, setProposalTitle] = useState('DIGITAL MARKETING SOLUTION PROPOSAL');
   const [solutionOverview, setSolutionOverview] = useState('Comprehensive digital marketing strategy to elevate your brand presence and drive sustainable business growth through SEO, Performance Ads, Content Marketing, and Creative Design.');
-  
+
   // Client Information
   const [clientName, setClientName] = useState('');
   const [clientCompany, setClientCompany] = useState('');
@@ -61,12 +61,12 @@ function App() {
     if (!previewRef.current) return;
 
     const element = previewRef.current;
-    
+
     const opt = {
       margin: 0,
       filename: `GLEADS_Proposal_${quoteNumber}_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`,
       image: { type: 'jpeg' as const, quality: 0.98 },
-      html2canvas: { 
+      html2canvas: {
         scale: 2,
         useCORS: true,
         logging: false,
@@ -78,12 +78,12 @@ function App() {
         width: element.scrollWidth,
         height: element.scrollHeight
       },
-      jsPDF: { 
-        unit: 'mm' as const, 
-        format: 'a4' as const, 
+      jsPDF: {
+        unit: 'mm' as const,
+        format: 'a4' as const,
         orientation: 'portrait' as const
       },
-      pagebreak: { 
+      pagebreak: {
         mode: 'css',
         avoid: '.page-break'
       }
