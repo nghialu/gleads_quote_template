@@ -25,6 +25,7 @@ interface QuotePreviewProps {
   validUntil: string;
   items: Item[];
   total: number;
+  aboutGleads: string;
   serviceNotes: string;
   warrantyPolicy: string;
   paymentTerms: string;
@@ -44,6 +45,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
   validUntil,
   items,
   total,
+  aboutGleads,
   serviceNotes,
   warrantyPolicy,
   paymentTerms,
@@ -61,7 +63,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
       />
 
       {/* Page 2: About Gleads */}
-      <AboutPage />
+      <AboutPage aboutGleads={aboutGleads} />
 
       {/* Page 3: Quote Details */}
       <QuotePage
@@ -73,7 +75,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         clientCompany={clientCompany}
       />
 
-      {/* Page 4: Terms and Signature */}
+      {/* Page 4+: Terms and Signature */}
       <TermsPage
         serviceNotes={serviceNotes}
         warrantyPolicy={warrantyPolicy}

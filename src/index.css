@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Page layout for preview */
+.page-break {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Print Styles */
 @media print {
   @page {
@@ -16,13 +24,72 @@
     -webkit-print-color-adjust: exact;
   }
 
+  /* Each section starts on new page */
   .page-break {
-    page-break-after: always !important;
+    page-break-before: always !important;
+    page-break-after: auto !important;
+    break-before: always !important;
+    break-after: auto !important;
+  }
+
+  /* First page (cover) should not have break before */
+  .page-break:first-child {
     page-break-before: auto !important;
-    page-break-inside: avoid !important;
-    break-after: page !important;
     break-before: auto !important;
+  }
+
+  /* Allow content within page to flow naturally */
+  .page-break>div {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  /* Table row break control */
+  .quote-table {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  .quote-table tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
     break-inside: avoid !important;
+    break-after: auto !important;
+  }
+
+  .quote-table thead {
+    display: table-header-group !important;
+  }
+
+  /* Keep total row and note together */
+  .total-row,
+  .quote-note {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Each quote page must be on separate page */
+  .quote-page-start {
+    page-break-before: always !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    break-before: always !important;
+    break-after: always !important;
+    break-inside: avoid !important;
+  }
+
+  /* First quote page should not break before */
+  .quote-page-start.first-quote-page {
+    page-break-before: always !important;
+    break-before: always !important;
+  }
+
+  /* Terms page MUST start on a new page AFTER quote section ends */
+  .terms-page {
+    page-break-before: always !important;
+    break-before: always !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
   }
 
   /* Ensure colors print correctly */
