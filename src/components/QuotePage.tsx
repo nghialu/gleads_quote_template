@@ -1,3 +1,5 @@
+import backgroundImg from '../assets/background.jpg';
+
 interface Item {
   id: number;
   service: string;
@@ -158,7 +160,7 @@ export default function QuotePage({
     const isLastPage = page.isLastPage;
 
     pageComponents.push(
-      <div key={pageIndex} className={`page-break quote-page-start ${isFirstPage ? 'first-quote-page' : ''} w-[210mm] h-[297mm] bg-white`} style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', pageBreakInside: 'avoid' }}>
+      <div key={pageIndex} className={`page-break quote-page-start ${isFirstPage ? 'first-quote-page' : ''} w-[210mm] h-[297mm] bg-white`} style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', pageBreakInside: 'avoid', backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         {/* Page Header */}
         <PageHeader pageNum={3 + pageIndex} />
 

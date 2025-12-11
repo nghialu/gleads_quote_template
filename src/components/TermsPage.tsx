@@ -1,3 +1,5 @@
+import backgroundImg from '../assets/background.jpg';
+
 interface TermsPageProps {
   serviceNotes: string;
   warrantyPolicy: string;
@@ -21,6 +23,10 @@ export default function TermsPage({
         overflow: 'visible',
         padding: '48px',
         boxSizing: 'border-box',
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       {/* Content Wrapper */}

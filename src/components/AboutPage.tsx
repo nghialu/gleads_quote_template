@@ -1,10 +1,12 @@
+import backgroundImg from '../assets/background.jpg';
+
 interface AboutPageProps {
   aboutGleads: string;
 }
 
 export default function AboutPage({ aboutGleads }: AboutPageProps) {
   return (
-    <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
+    <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column', backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       {/* Header */}
       <div className="mb-6">
         <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
