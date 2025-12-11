@@ -1,4 +1,4 @@
-import backgroundImg from '../assets/background.jpg';
+import gleadsLogo from '../assets/gleads logo.webp';
 
 interface Item {
   id: number;
@@ -42,7 +42,11 @@ const PageHeader = ({ pageNum }: { pageNum: number }) => (
   <div className="mb-6">
     <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
       <div>
-        <h1 className="text-xl font-bold text-blue-600">GLEADS</h1>
+        <img
+          src={gleadsLogo}
+          alt="Gleads Logo"
+          className="h-8 w-auto"
+        />
         <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
       </div>
       <div className="text-right text-xs text-gray-600">
@@ -160,7 +164,7 @@ export default function QuotePage({
     const isLastPage = page.isLastPage;
 
     pageComponents.push(
-      <div key={pageIndex} className={`page-break quote-page-start ${isFirstPage ? 'first-quote-page' : ''} w-[210mm] h-[297mm] bg-white`} style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', pageBreakInside: 'avoid', backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div key={pageIndex} className={`page-break quote-page-start ${isFirstPage ? 'first-quote-page' : ''} w-[210mm] h-[297mm] bg-white`} style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', pageBreakInside: 'avoid', backgroundColor: '#FDFBF5' }}>
         {/* Page Header */}
         <PageHeader pageNum={3 + pageIndex} />
 
@@ -254,7 +258,6 @@ export default function QuotePage({
             marginTop: 'auto',
             borderTop: '2px solid #e5e7eb',
             paddingTop: '12px',
-            backgroundColor: 'white',
             pageBreakInside: 'avoid',
             breakInside: 'avoid',
           }}

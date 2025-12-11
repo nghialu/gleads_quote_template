@@ -1,3 +1,5 @@
+import gleadsLogo from '../assets/gleads logo.webp';
+
 export default function CredibilityPage() {
     return (
         <div className="page-break w-[210mm] h-[297mm] bg-white p-12 flex flex-col">
@@ -5,7 +7,11 @@ export default function CredibilityPage() {
             <div className="mb-6">
                 <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
                     <div>
-                        <h1 className="text-xl font-bold text-blue-600">GLEADS</h1>
+                        <img
+                            src={gleadsLogo}
+                            alt="Gleads Logo"
+                            className="h-8 w-auto"
+                        />
                         <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
                     </div>
                     <div className="text-right text-xs text-gray-600">

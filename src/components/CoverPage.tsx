@@ -1,4 +1,4 @@
-import gleadsLogo from '../assets/Logo Gleads (2).png';
+import gleadsLogo from '../assets/gleads logo.webp';
 import backgroundImg from '../assets/background.jpg';
 
 interface CoverPageProps {

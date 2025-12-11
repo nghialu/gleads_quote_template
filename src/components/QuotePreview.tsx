@@ -2,7 +2,9 @@ import { forwardRef } from 'react';
 import CoverPage from './CoverPage';
 import AboutPage from './AboutPage';
 import QuotePage from './QuotePage';
-import TermsPage from './TermsPage';
+import TermsPage1 from './TermsPage1';
+import TermsPage2 from './TermsPage2';
+import ContactPage from './ContactPage';
 
 interface Item {
   id: number;
@@ -75,13 +77,20 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         clientCompany={clientCompany}
       />
 
-      {/* Page 4+: Terms and Signature */}
-      <TermsPage
+      {/* Page 4: Terms and Policies - Part 1 */}
+      <TermsPage1
         serviceNotes={serviceNotes}
         warrantyPolicy={warrantyPolicy}
+      />
+
+      {/* Page 5: Terms and Policies - Part 2 */}
+      <TermsPage2
         paymentTerms={paymentTerms}
         bankInfo={bankInfo}
       />
+
+      {/* Page 6: Contact Information */}
+      <ContactPage />
     </div>
   );
 });

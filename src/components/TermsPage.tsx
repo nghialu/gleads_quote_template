@@ -1,4 +1,4 @@
-import backgroundImg from '../assets/background.jpg';
+import gleadsLogo from '../assets/gleads logo.webp';
 
 interface TermsPageProps {
   serviceNotes: string;
@@ -23,10 +23,7 @@ export default function TermsPage({
         overflow: 'visible',
         padding: '48px',
         boxSizing: 'border-box',
-        backgroundImage: `url(${backgroundImg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#FDFBF5',
       }}
     >
       {/* Content Wrapper */}
@@ -35,7 +32,11 @@ export default function TermsPage({
         <div className="mb-6">
           <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
             <div>
-              <h1 className="text-xl font-bold text-blue-600">GLEADS</h1>
+              <img
+                src={gleadsLogo}
+                alt="Gleads Logo"
+                className="h-8 w-auto"
+              />
               <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
             </div>
             <div className="text-right text-xs text-gray-600">

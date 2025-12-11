@@ -1,4 +1,4 @@
-import backgroundImg from '../assets/background.jpg';
+import gleadsLogo from '../assets/gleads logo.webp';
 
 interface AboutPageProps {
   aboutGleads: string;
@@ -6,12 +6,16 @@ interface AboutPageProps {
 
 export default function AboutPage({ aboutGleads }: AboutPageProps) {
   return (
-    <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column', backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+    <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column', backgroundColor: '#FDFBF5' }}>
       {/* Header */}
       <div className="mb-6">
         <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
           <div>
-            <h1 className="text-xl font-bold text-blue-600">GLEADS</h1>
+            <img
+              src={gleadsLogo}
+              alt="Gleads Logo"
+              className="h-8 w-auto"
+            />
             <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
           </div>
           <div className="text-right text-xs text-gray-600">
@@ -24,7 +28,7 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
       <div style={{ flex: 1, overflow: 'hidden', paddingBottom: '50px' }}>
         <div className="mb-6">
           <h2 className="text-3xl font-bold text-gray-900">VỀ GLEADS</h2>
-          <p className="text-lg text-gray-600 mt-1">Comprehensive Communications & Marketing Agency</p>
+          {/* <p className="text-lg text-gray-600 mt-1">Comprehensive Communications & Marketing Agency</p> */}
         </div>
 
         {/* Company Introduction - Dynamic Content with Rich Typography */}
@@ -72,7 +76,7 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
       </div>
 
       {/* Footer - Fixed at bottom */}
-      <div style={{ position: 'absolute', bottom: '48px', left: '48px', right: '48px', borderTop: '2px solid #e5e7eb', paddingTop: '12px', backgroundColor: 'white', zIndex: 10 }}>
+      <div style={{ position: 'absolute', bottom: '48px', left: '48px', right: '48px', borderTop: '2px solid #e5e7eb', paddingTop: '12px', zIndex: 10 }}>
         <div className="flex justify-between items-center text-xs text-gray-600">
           <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
           <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
