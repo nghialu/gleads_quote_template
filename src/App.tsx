@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { FileText, Download } from 'lucide-react';
-import html2pdf from 'html2pdf.js';
 import QuoteForm from './components/QuoteForm';
 import QuotePreview from './components/QuotePreview';
 
@@ -154,46 +153,75 @@ Quý khách vui lòng liên hệ đại diện chăm sóc khách hàng của GLE
     const element = previewRef.current;
 
     try {
-      // Wait for images to load (logo only, background is CSS)
+      // Wait for images to load
       const images = element.querySelectorAll('img');
       await Promise.all(
         Array.from(images).map(img => {
           if (img.complete) return Promise.resolve();
           return new Promise((resolve) => {
             img.onload = resolve;
-            img.onerror = resolve; // Continue even if image fails
+            img.onerror = resolve;
           });
         })
       );
 
-      // Wait longer for background images to render
+      // Wait for background images to render
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const opt = {
-        margin: 0,
-        filename: `GLEADS_Proposal_${quoteNumber}_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`,
-        image: { type: 'jpeg' as const, quality: 0.95 },
-        html2canvas: {
+      // Import jsPDF and html2canvas
+      const { jsPDF } = await import('jspdf');
+      const html2canvas = (await import('html2canvas')).default;
+
+      // Get all page elements
+      const pages = element.querySelectorAll('.page-break');
+
+      if (pages.length === 0) {
+        throw new Error('No pages found');
+      }
+
+      // Create new PDF document
+      const pdf = new jsPDF({
+        unit: 'mm',
+        format: 'a4',
+        orientation: 'portrait'
+      });
+
+      // Process each page
+      for (let i = 0; i < pages.length; i++) {
+        const page = pages[i] as HTMLElement;
+
+        // Convert page to canvas
+        const canvas = await html2canvas(page, {
           scale: 2,
           useCORS: false,
           allowTaint: true,
           logging: false,
           backgroundColor: '#ffffff',
           imageTimeout: 15000,
-          removeContainer: true
-        },
-        jsPDF: {
-          unit: 'mm' as const,
-          format: 'a4' as const,
-          orientation: 'portrait' as const
-        },
-        pagebreak: {
-          mode: 'css',
-          avoid: '.page-break'
-        }
-      };
+          windowWidth: page.scrollWidth,
+          windowHeight: page.scrollHeight
+        });
 
-      await html2pdf().set(opt).from(element).save();
+        // Convert canvas to image
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+        // Add new page if not first
+        if (i > 0) {
+          pdf.addPage();
+        }
+
+        // Calculate dimensions to fit A4
+        const imgWidth = 210; // A4 width in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // Add image to PDF
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+      }
+
+      // Save PDF
+      const filename = `GLEADS_Proposal_${quoteNumber}_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`;
+      pdf.save(filename);
+
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Có lỗi khi tạo PDF. Vui lòng thử lại.');

@@ -4,7 +4,7 @@ interface AboutPageProps {
 
 export default function AboutPage({ aboutGleads }: AboutPageProps) {
   return (
-    <div className="page-break w-[210mm] h-[297mm] bg-white p-12 flex flex-col">
+    <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
       <div className="mb-6">
         <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
@@ -19,7 +19,7 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1">
+      <div style={{ flex: 1, overflow: 'hidden', paddingBottom: '50px' }}>
         <div className="mb-6">
           <h2 className="text-3xl font-bold text-gray-900">VỀ GLEADS</h2>
           <p className="text-lg text-gray-600 mt-1">Comprehensive Communications & Marketing Agency</p>
@@ -69,8 +69,8 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
 
       </div>
 
-      {/* Footer */}
-      <div className="mt-4 border-t-2 border-gray-200 pt-3">
+      {/* Footer - Fixed at bottom */}
+      <div style={{ position: 'absolute', bottom: '48px', left: '48px', right: '48px', borderTop: '2px solid #e5e7eb', paddingTop: '12px', backgroundColor: 'white', zIndex: 10 }}>
         <div className="flex justify-between items-center text-xs text-gray-600">
           <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
           <p>www.gleadsglobal.com | service@gleadsglobal.com</p>

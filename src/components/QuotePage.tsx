@@ -84,18 +84,16 @@ export default function QuotePage({
   const PAGE_HEIGHT_MM = 297;
   const PADDING_MM = 12.7; // 48px ≈ 12.7mm
   const HEADER_HEIGHT_MM = 25;
-  const FOOTER_HEIGHT_MM = 20;
+  const FOOTER_HEIGHT_MM = 15; // Footer actual height: border + padding + text
   const TITLE_SECTION_HEIGHT_MM = 40; // Title + quote info on first page
   const TABLE_HEADER_HEIGHT_MM = 18;
   const NOTE_HEIGHT_MM = 22;
   const TOTAL_ROW_HEIGHT_MM = 18;
-  const SAFETY_MARGIN_MM = 10; // Extra margin for safety
+  const SAFETY_MARGIN_MM = 25; // Extra buffer to ensure footer fits
 
-  // Available height for table rows (conservative)
+  // Available height for table rows - MUST leave room for footer
   const FIRST_PAGE_AVAILABLE_HEIGHT = PAGE_HEIGHT_MM - (PADDING_MM * 2) - HEADER_HEIGHT_MM - TITLE_SECTION_HEIGHT_MM - TABLE_HEADER_HEIGHT_MM - FOOTER_HEIGHT_MM - NOTE_HEIGHT_MM - TOTAL_ROW_HEIGHT_MM - SAFETY_MARGIN_MM;
-  const OTHER_PAGE_AVAILABLE_HEIGHT = PAGE_HEIGHT_MM - (PADDING_MM * 2) - HEADER_HEIGHT_MM - TABLE_HEADER_HEIGHT_MM - FOOTER_HEIGHT_MM - SAFETY_MARGIN_MM;
-
-  // Estimate row height based on description length
+  const OTHER_PAGE_AVAILABLE_HEIGHT = PAGE_HEIGHT_MM - (PADDING_MM * 2) - HEADER_HEIGHT_MM - TABLE_HEADER_HEIGHT_MM - FOOTER_HEIGHT_MM - SAFETY_MARGIN_MM;  // Estimate row height based on description length
   // More conservative estimate to avoid overflow
   const estimateRowHeight = (item: Item): number => {
     const serviceNameHeight = 10; // mm for service name + margin
@@ -160,7 +158,7 @@ export default function QuotePage({
     const isLastPage = page.isLastPage;
 
     pageComponents.push(
-      <div key={pageIndex} className={`quote-page-start ${isFirstPage ? 'first-quote-page' : ''} w-[210mm] h-[297mm] bg-white p-12 flex flex-col`}>
+      <div key={pageIndex} className={`page-break quote-page-start ${isFirstPage ? 'first-quote-page' : ''} w-[210mm] h-[297mm] bg-white`} style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', pageBreakInside: 'avoid' }}>
         {/* Page Header */}
         <PageHeader pageNum={3 + pageIndex} />
 
@@ -204,46 +202,61 @@ export default function QuotePage({
           </>
         )}
 
-        {/* Quote Table */}
-        <div className="flex-1 mb-5">
-          <table className="w-full border-collapse text-sm quote-table" style={{ tableLayout: 'fixed' }}>
-            <TableHeader />
-            <tbody>
-              {page.items.map((item, index) => (
-                <TableRow key={item.id} item={item} index={itemIndexOffset + index} />
-              ))}
+        {/* Content Wrapper - flex-1 to fill space */}
+        <div className="quote-content-wrapper" style={{ flex: 1, overflow: 'visible' }}>
+          {/* Quote Table */}
+          <div className="mb-5">
+            <table className="w-full border-collapse text-sm quote-table" style={{ tableLayout: 'fixed' }}>
+              <TableHeader />
+              <tbody>
+                {page.items.map((item, index) => (
+                  <TableRow key={item.id} item={item} index={itemIndexOffset + index} />
+                ))}
 
-              {/* Total Row - Only on last page */}
-              {isLastPage && (
-                <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 total-row" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
-                  <td className="p-3 border border-gray-300 font-bold text-gray-900" colSpan={2}>
-                    TỔNG CHI PHÍ DỰ KIẾN
-                    <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div>
-                  </td>
-                  <td className="p-3 border border-gray-300 text-right">
-                    <p className="text-xl font-bold text-blue-600">
-                      {total.toLocaleString('vi-VN')} VNĐ
-                    </p>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Note - Only on last page */}
-        {isLastPage && (
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded quote-note mb-4" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
-            <p className="text-xs text-gray-700">
-              <strong>Lưu ý:</strong> Báo giá trên là ước tính dựa trên thông tin hiện tại.
-              Chi phí cuối cùng có thể thay đổi tùy thuộc vào phạm vi công việc thực tế và
-              các yêu cầu bổ sung từ khách hàng.
-            </p>
+                {/* Total Row - Only on last page */}
+                {isLastPage && (
+                  <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 total-row" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
+                    <td className="p-3 border border-gray-300 font-bold text-gray-900" colSpan={2}>
+                      TỔNG CHI PHÍ DỰ KIẾN
+                      <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div>
+                    </td>
+                    <td className="p-3 border border-gray-300 text-right">
+                      <p className="text-xl font-bold text-blue-600">
+                        {total.toLocaleString('vi-VN')} VNĐ
+                      </p>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
-        )}
 
-        {/* Footer - pushed to bottom */}
-        <div className="mt-auto border-t-2 border-gray-200 pt-3">
+          {/* Note - Only on last page */}
+          {isLastPage && (
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded quote-note mb-4" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
+              <p className="text-xs text-gray-700">
+                <strong>Lưu ý:</strong> Báo giá trên là ước tính dựa trên thông tin hiện tại.
+                Chi phí cuối cùng có thể thay đổi tùy thuộc vào phạm vi công việc thực tế và
+                các yêu cầu bổ sung từ khách hàng.
+              </p>
+            </div>
+          )}
+
+        </div>
+        {/* End Content Wrapper */}
+
+        {/* Footer - At bottom of flex container */}
+        <div
+          className="quote-footer"
+          style={{
+            marginTop: 'auto',
+            borderTop: '2px solid #e5e7eb',
+            paddingTop: '12px',
+            backgroundColor: 'white',
+            pageBreakInside: 'avoid',
+            breakInside: 'avoid',
+          }}
+        >
           <div className="flex justify-between items-center text-xs text-gray-600">
             <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
             <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
