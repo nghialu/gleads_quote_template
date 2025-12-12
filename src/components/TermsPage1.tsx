@@ -3,11 +3,15 @@ import gleadsLogo from '../assets/gleads logo.webp';
 interface TermsPage1Props {
     serviceNotes: string;
     warrantyPolicy: string;
+    serviceType: string;
+    pageTitle: string;
 }
 
 export default function TermsPage1({
     serviceNotes,
     warrantyPolicy,
+    serviceType,
+    pageTitle,
 }: TermsPage1Props) {
     return (
         <div
@@ -43,7 +47,7 @@ export default function TermsPage1({
 
                 {/* Main Title */}
                 <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900">GHI CHÚ và CHÍNH SÁCH BẢO HÀNH</h2>
+                    <h2 className="text-3xl font-bold text-gray-900">{pageTitle}</h2>
                     {/* <p className="text-lg text-gray-600 mt-1">Terms & Policies - Part 1</p> */}
                 </div>
 
@@ -53,36 +57,42 @@ export default function TermsPage1({
                     <div className="mb-6">
                         <h3 className="text-xl font-bold text-gray-700 mb-3">
                             <span className="text-gray-700 mr-2">01.</span>
-                            GHI CHÚ VỀ DỊCH VỤ
+                            GHI CHÚ VỀ DỊCH VỤ.
                         </h3>
                         <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{serviceNotes}</p>
                     </div>
 
-                    {/* Warranty Policy */}
-                    <div className="mb-6">
-                        <h3 className="text-xl font-bold text-gray-700 mb-3">
-                            <span className="text-gray-700 mr-2">02.</span>
-                            CHÍNH SÁCH BẢO HÀNH
-                        </h3>
-                        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
-                    </div>
+                    {/* Warranty Policy - Skip for content and design services, or if empty */}
+                    {serviceType !== 'content' && serviceType !== 'design' && warrantyPolicy && (
+                        <div className="mb-6">
+                            <h3 className="text-xl font-bold text-gray-700 mb-3">
+                                <span className="text-gray-700 mr-2">02.</span>
+                                CHÍNH SÁCH BẢO HÀNH.
+                            </h3>
+                            <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
+                        </div>
+                    )}
                 </div>
             </div>
 
-            {/* Fixed Footer */}
+            {/* Footer - Match QuotePage */}
             <div
+                className="quote-footer"
                 style={{
+                    marginTop: 'auto',
+                    borderTop: '2px solid #e5e7eb',
+                    paddingTop: '12px',
+                    pageBreakInside: 'avoid',
+                    breakInside: 'avoid',
                     position: 'absolute',
-                    bottom: '48px',
                     left: '48px',
                     right: '48px',
-                    zIndex: 10,
+                    bottom: '48px',
                 }}
             >
-                <div className="border-t-2 border-gray-200 pt-2">
-                    <div className="text-center text-xs text-gray-500">
-                        <p>© 2025 GLEADS Pte. Ltd. All rights reserved. | www.gleadsglobal.com</p>
-                    </div>
+                <div className="flex justify-between items-center text-xs text-gray-600">
+                    <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
+                    <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
                 </div>
             </div>
         </div>

@@ -6,21 +6,23 @@ interface Item {
   description: string;
   timeline: string;
   cost: number;
+  discountType?: 'percentage' | 'fixed' | 'none';
+  discountValue?: number;
 }
 
 interface QuotePageProps {
-  quoteNumber: string;
   quoteDate: string;
   validUntil: string;
   items: Item[];
   total: number;
   clientCompany: string;
+  pageTitle: string;
 }
 
-// Component for table header
+// Table header component for reuse across pages
 const TableHeader = () => (
   <thead>
-    <tr style={{ background: 'linear-gradient(to right, #F6581C, #ffb380)', color: 'white' }}>
+    <tr style={{ background: '#F6581C' }}>
       <th
         className="text-left p-3 font-bold border"
         style={{ width: '50%', borderColor: '#F6581C' }}
@@ -88,12 +90,12 @@ const TableRow = ({ item, index }: { item: Item; index: number }) => (
 );
 
 export default function QuotePage({
-  quoteNumber,
   quoteDate,
   validUntil,
   items,
   total,
   clientCompany,
+  pageTitle,
 }: QuotePageProps) {
   // Constants for page layout (in mm)
   const PAGE_HEIGHT_MM = 297;
@@ -129,7 +131,7 @@ export default function QuotePage({
   let currentPageHeight = 0;
   let availableHeight = FIRST_PAGE_AVAILABLE_HEIGHT;
 
-  items.forEach((item, index) => {
+  items.forEach((item) => {
     const rowHeight = estimateRowHeight(item);
 
     // Check if row fits in current page
@@ -181,7 +183,7 @@ export default function QuotePage({
         {isFirstPage && (
           <>
             <div className="mb-5">
-              <h2 className="text-3xl font-bold text-gray-900">BÁO GIÁ CHI TIẾT</h2>
+              <h2 className="text-3xl font-bold text-gray-900">{pageTitle}</h2>
               {/* <p className="text-lg text-gray-600 mt-1">Detailed Quotation</p> */}
             </div>
 
@@ -228,34 +230,67 @@ export default function QuotePage({
                   <TableRow key={item.id} item={item} index={itemIndexOffset + index} />
                 ))}
 
-                {/* Total Row - Only on last page */}
-                {isLastPage && (
-                  <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 total-row" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
-                    <td className="p-3 border border-gray-300 font-bold text-gray-900" colSpan={2}>
-                      TỔNG CHI PHÍ DỰ KIẾN
-                      <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div>
-                    </td>
-                    <td className="p-3 border border-gray-300 text-right">
-                      <p className="text-xl font-bold text-blue-600">
-                        {total.toLocaleString('vi-VN')} VNĐ
-                      </p>
-                    </td>
-                  </tr>
-                )}
+                {/* Subtotal and Discount - Only on last page */}
+                {isLastPage && (() => {
+                  const subtotal = items.reduce((sum, i) => sum + (Number(i.cost) || 0), 0);
+                  const totalDiscount = items.reduce((sum, i) => {
+                    const cost = Number(i.cost) || 0;
+                    let discount = 0;
+                    if (i.discountType === 'percentage' && i.discountValue) {
+                      discount = (cost * i.discountValue) / 100;
+                    } else if (i.discountType === 'fixed' && i.discountValue) {
+                      discount = i.discountValue;
+                    }
+                    return sum + discount;
+                  }, 0);
+
+                  return (
+                    <>
+                      {totalDiscount > 0 && (
+                        <>
+                          <tr className="bg-gray-50" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
+                            <td className="p-3 border border-gray-300 font-semibold text-gray-900" colSpan={2}>
+                              Tổng trước chiết khấu
+                              <div className="text-xs font-normal text-gray-600">Subtotal</div>
+                            </td>
+                            <td className="p-3 border border-gray-300 text-right">
+                              <p className="font-semibold text-gray-900 text-sm">
+                                {subtotal.toLocaleString('vi-VN')} VNĐ
+                              </p>
+                            </td>
+                          </tr>
+                          <tr className="bg-red-50" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
+                            <td className="p-3 border border-gray-300 font-semibold text-gray-900" colSpan={2}>
+                              Chiết khấu
+                              <div className="text-xs font-normal text-gray-600">Discount</div>
+                            </td>
+                            <td className="p-3 border border-gray-300 text-right">
+                              <p className="font-semibold text-red-600 text-sm">
+                                -{totalDiscount.toLocaleString('vi-VN')} VNĐ
+                              </p>
+                            </td>
+                          </tr>
+                        </>
+                      )}
+                      <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 total-row" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
+                        <td className="p-3 border border-gray-300 font-bold text-gray-900" colSpan={2}>
+                          TỔNG CHI PHÍ DỰ KIẾN
+                          <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div>
+                        </td>
+                        <td className="p-3 border border-gray-300 text-right">
+                          <p className="text-xl font-bold text-black">
+                            {total.toLocaleString('vi-VN')} VNĐ
+                          </p>
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })()}
               </tbody>
             </table>
           </div>
 
-          {/* Note - Only on last page */}
-          {isLastPage && (
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded quote-note mb-4" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
-              <p className="text-xs text-gray-700">
-                <strong>Lưu ý:</strong> Báo giá trên là ước tính dựa trên thông tin hiện tại.
-                Chi phí cuối cùng có thể thay đổi tùy thuộc vào phạm vi công việc thực tế và
-                các yêu cầu bổ sung từ khách hàng.
-              </p>
-            </div>
-          )}
+          {/* Note removed as requested */}
 
         </div>
         {/* End Content Wrapper */}

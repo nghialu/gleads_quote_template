@@ -3,11 +3,13 @@ import gleadsLogo from '../assets/gleads logo.webp';
 interface TermsPage2Props {
     paymentTerms: string;
     bankInfo: string;
+    pageTitle: string;
 }
 
 export default function TermsPage2({
     paymentTerms,
     bankInfo,
+    pageTitle,
 }: TermsPage2Props) {
     return (
         <div
@@ -43,7 +45,7 @@ export default function TermsPage2({
 
                 {/* Main Title */}
                 <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900">THANH TOÁN và XÁC NHẬN</h2>
+                    <h2 className="text-3xl font-bold text-gray-900">{pageTitle}</h2>
                     <p className="text-lg text-gray-600 mt-1">Payment & Confirmation</p>
                 </div>
 
@@ -95,20 +97,24 @@ export default function TermsPage2({
                 </div>
             </div>
 
-            {/* Fixed Footer */}
+            {/* Footer - Match QuotePage */}
             <div
+                className="quote-footer"
                 style={{
+                    marginTop: 'auto',
+                    borderTop: '2px solid #e5e7eb',
+                    paddingTop: '12px',
+                    pageBreakInside: 'avoid',
+                    breakInside: 'avoid',
                     position: 'absolute',
-                    bottom: '48px',
                     left: '48px',
                     right: '48px',
-                    zIndex: 10,
+                    bottom: '48px',
                 }}
             >
-                <div className="border-t-2 border-gray-200 pt-2">
-                    <div className="text-center text-xs text-gray-500">
-                        <p>© 2025 GLEADS Pte. Ltd. All rights reserved. | www.gleadsglobal.com</p>
-                    </div>
+                <div className="flex justify-between items-center text-xs text-gray-600">
+                    <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
+                    <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
                 </div>
             </div>
         </div>

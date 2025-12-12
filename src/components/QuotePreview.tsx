@@ -12,6 +12,8 @@ interface Item {
   description: string;
   timeline: string;
   cost: number;
+  discountType?: 'percentage' | 'fixed' | 'none';
+  discountValue?: number;
 }
 
 interface QuotePreviewProps {
@@ -22,7 +24,6 @@ interface QuotePreviewProps {
   clientAddress: string;
   clientEmail: string;
   clientPhone: string;
-  quoteNumber: string;
   quoteDate: string;
   validUntil: string;
   items: Item[];
@@ -32,6 +33,11 @@ interface QuotePreviewProps {
   warrantyPolicy: string;
   paymentTerms: string;
   bankInfo: string;
+  serviceType: string;
+  aboutPageTitle: string;
+  quotePageTitle: string;
+  termsPageTitle: string;
+  paymentPageTitle: string;
 }
 
 const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function QuotePreview({
@@ -42,7 +48,6 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
   clientAddress,
   clientEmail,
   clientPhone,
-  quoteNumber,
   quoteDate,
   validUntil,
   items,
@@ -52,6 +57,11 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
   warrantyPolicy,
   paymentTerms,
   bankInfo,
+  serviceType,
+  aboutPageTitle,
+  quotePageTitle,
+  termsPageTitle,
+  paymentPageTitle,
 }, ref) {
   return (
     <div ref={ref} className="w-full mx-auto bg-white" style={{ width: '210mm' }}>
@@ -64,29 +74,32 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         quoteDate={quoteDate}
       />
 
-      {/* Page 2: About Gleads */}
-      <AboutPage aboutGleads={aboutGleads} />
+      {/* Page 2: About Gleads - Only show if content exists */}
+      {aboutGleads && <AboutPage aboutGleads={aboutGleads} serviceType={serviceType} pageTitle={aboutPageTitle} />}
 
       {/* Page 3: Quote Details */}
       <QuotePage
-        quoteNumber={quoteNumber}
         quoteDate={quoteDate}
         validUntil={validUntil}
         items={items}
         total={total}
         clientCompany={clientCompany}
+        pageTitle={quotePageTitle}
       />
 
       {/* Page 4: Terms and Policies - Part 1 */}
       <TermsPage1
         serviceNotes={serviceNotes}
         warrantyPolicy={warrantyPolicy}
+        serviceType={serviceType}
+        pageTitle={termsPageTitle}
       />
 
       {/* Page 5: Terms and Policies - Part 2 */}
       <TermsPage2
         paymentTerms={paymentTerms}
         bankInfo={bankInfo}
+        pageTitle={paymentPageTitle}
       />
 
       {/* Page 6: Contact Information */}

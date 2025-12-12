@@ -6,6 +6,8 @@ interface Item {
   description: string;
   timeline: string;
   cost: number;
+  discountType?: 'percentage' | 'fixed' | 'none';
+  discountValue?: number;
 }
 
 interface QuoteFormProps {
@@ -23,8 +25,6 @@ interface QuoteFormProps {
   setClientEmail: (value: string) => void;
   clientPhone: string;
   setClientPhone: (value: string) => void;
-  quoteNumber: string;
-  setQuoteNumber: (value: string) => void;
   quoteDate: string;
   setQuoteDate: (value: string) => void;
   validUntil: string;
@@ -45,6 +45,14 @@ interface QuoteFormProps {
   setPaymentTerms: (value: string) => void;
   bankInfo: string;
   setBankInfo: (value: string) => void;
+  aboutPageTitle: string;
+  setAboutPageTitle: (value: string) => void;
+  quotePageTitle: string;
+  setQuotePageTitle: (value: string) => void;
+  termsPageTitle: string;
+  setTermsPageTitle: (value: string) => void;
+  paymentPageTitle: string;
+  setPaymentPageTitle: (value: string) => void;
 }
 
 export default function QuoteForm({
@@ -62,8 +70,6 @@ export default function QuoteForm({
   setClientEmail,
   clientPhone,
   setClientPhone,
-  quoteNumber,
-  setQuoteNumber,
   quoteDate,
   setQuoteDate,
   validUntil,
@@ -84,6 +90,14 @@ export default function QuoteForm({
   setPaymentTerms,
   bankInfo,
   setBankInfo,
+  aboutPageTitle,
+  setAboutPageTitle,
+  quotePageTitle,
+  setQuotePageTitle,
+  termsPageTitle,
+  setTermsPageTitle,
+  paymentPageTitle,
+  setPaymentPageTitle,
 }: QuoteFormProps) {
   return (
     <div className="space-y-6 print:hidden">
@@ -111,6 +125,55 @@ export default function QuoteForm({
               rows={3}
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
               placeholder="Mô tả tổng quan về giải pháp cung cấp cho khách hàng..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-xl shadow-sm border border-purple-200 p-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <span className="bg-purple-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">📝</span>
+          Tiêu Đề Các Trang
+        </h2>
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Tiêu đề Page 2 - Về GLEADS</label>
+            <input
+              type="text"
+              value={aboutPageTitle}
+              onChange={(e) => setAboutPageTitle(e.target.value)}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+              placeholder="VỀ GLEADS"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Tiêu đề Page 3 - Báo giá</label>
+            <input
+              type="text"
+              value={quotePageTitle}
+              onChange={(e) => setQuotePageTitle(e.target.value)}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+              placeholder="BÁO GIÁ CHI TIẾT."
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Tiêu đề Page 4 - Ghi chú & Bảo hành</label>
+            <input
+              type="text"
+              value={termsPageTitle}
+              onChange={(e) => setTermsPageTitle(e.target.value)}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+              placeholder="GHI CHÚ và CHÍNH SÁCH BẢO HÀNH."
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Tiêu đề Page 5 - Thanh toán</label>
+            <input
+              type="text"
+              value={paymentPageTitle}
+              onChange={(e) => setPaymentPageTitle(e.target.value)}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+              placeholder="THANH TOÁN và XÁC NHẬN."
             />
           </div>
         </div>
@@ -182,17 +245,7 @@ export default function QuoteForm({
           <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">3</span>
           Chi Tiết Báo Giá
         </h2>
-        <div className="grid grid-cols-3 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Mã báo giá</label>
-            <input
-              type="text"
-              value={quoteNumber}
-              onChange={(e) => setQuoteNumber(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              placeholder="BGT-2025-001"
-            />
-          </div>
+        <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Ngày báo giá</label>
             <input
@@ -285,6 +338,35 @@ export default function QuoteForm({
                   />
                 </div>
               </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Loại chiết khấu</label>
+                  <select
+                    value={item.discountType || 'none'}
+                    onChange={(e) => updateItem(item.id, 'discountType', e.target.value)}
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  >
+                    <option value="none">Không chiết khấu</option>
+                    <option value="percentage">Phần trăm (%)</option>
+                    <option value="fixed">Số tiền cố định (VNĐ)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    {item.discountType === 'percentage' ? 'Giá trị (%)' : 'Giá trị (VNĐ)'}
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    max={item.discountType === 'percentage' ? '100' : undefined}
+                    value={item.discountValue || 0}
+                    onChange={(e) => updateItem(item.id, 'discountValue', Number(e.target.value))}
+                    disabled={!item.discountType || item.discountType === 'none'}
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -307,7 +389,7 @@ export default function QuoteForm({
             >
               <option value="custom">Tùy chỉnh (nhập thủ công)</option>
               <option value="content">Content Marketing</option>
-              <option value="design">Design & Creative</option>
+              <option value="design">Design and Creative</option>
               <option value="website">Website Development</option>
             </select>
             <p className="text-xs text-gray-500 mt-1">
@@ -316,9 +398,18 @@ export default function QuoteForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Về GLEADS (Page 2)
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-slate-700">
+                Về GLEADS (Page 2)
+              </label>
+              <button
+                onClick={() => setAboutGleads('')}
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                title="Xóa nội dung"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
             <textarea
               value={aboutGleads}
               onChange={(e) => setAboutGleads(e.target.value)}
@@ -332,9 +423,18 @@ export default function QuoteForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Ghi chú về dịch vụ (Page 4)
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-slate-700">
+                Ghi chú về dịch vụ (Page 4)
+              </label>
+              <button
+                onClick={() => setServiceNotes('')}
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                title="Xóa nội dung"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
             <textarea
               value={serviceNotes}
               onChange={(e) => setServiceNotes(e.target.value)}
@@ -345,9 +445,18 @@ export default function QuoteForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Chính sách bảo hành (Page 4)
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-slate-700">
+                Chính sách bảo hành (Page 4)
+              </label>
+              <button
+                onClick={() => setWarrantyPolicy('')}
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                title="Xóa nội dung"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
             <textarea
               value={warrantyPolicy}
               onChange={(e) => setWarrantyPolicy(e.target.value)}
@@ -369,7 +478,7 @@ export default function QuoteForm({
         </p>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Phương thức thanh toán</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Phương thức thanh toán.</label>
             <textarea
               value={paymentTerms}
               onChange={(e) => setPaymentTerms(e.target.value)}

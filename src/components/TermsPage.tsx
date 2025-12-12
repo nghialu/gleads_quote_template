@@ -59,7 +59,7 @@ export default function TermsPage({
               <span className="bg-blue-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs mr-2">
                 01
               </span>
-              GHI CHÚ VỀ DỊCH VỤ
+              GHI CHÚ VỀ DỊCH VỤ.
             </h3>
             <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{serviceNotes}</p>
           </div>
@@ -70,7 +70,7 @@ export default function TermsPage({
               <span className="bg-green-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs mr-2">
                 02
               </span>
-              CHÍNH SÁCH BẢO HÀNH
+              CHÍNH SÁCH BẢO HÀNH.
             </h3>
             <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
           </div>
@@ -81,7 +81,7 @@ export default function TermsPage({
               <span className="bg-purple-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs mr-2">
                 03
               </span>
-              PHƯƠNG THỨC THANH TOÁN
+              PHƯƠNG THỨC THANH TOÁN.
             </h3>
             <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{paymentTerms}</p>
           </div>
@@ -92,7 +92,7 @@ export default function TermsPage({
               <span className="bg-orange-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs mr-2">
                 04
               </span>
-              THÔNG TIN TÀI KHOẢN NGÂN HÀNG
+              THÔNG TIN TÀI KHOẢN NGÂN HÀNG.
             </h3>
             <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line font-mono">{bankInfo}</p>
           </div>
@@ -121,7 +121,7 @@ export default function TermsPage({
                 </div>
                 <div className="space-y-1 text-xs">
                   <p>📧 service@gleadsglobal.com</p>
-                  <p>📞 +65 3138 1666</p>
+                  <p>📞 (+84)28 6272 2262</p>
                   <p>🌐 www.gleadsglobal.com</p>
                   <p className="mt-2 text-xs" style={{ color: '#FFE5D1' }}>
                     UEN: 202231106G | ISO/IEC 27001
@@ -134,7 +134,7 @@ export default function TermsPage({
           {/* Signature Section */}
           <div className="mt-6 pt-4 border-t-2 border-gray-300">
             <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
-              XÁC NHẬN & KÝ KẾT
+              XÁC NHẬN và KÝ KẾT
             </h3>
             <div className="grid grid-cols-2 gap-8">
               {/* Client Signature */}
@@ -151,7 +151,7 @@ export default function TermsPage({
                 <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-6 mb-3 h-28 flex items-center justify-center">
                   <p className="text-gray-400 text-sm">Chữ ký & đóng dấu</p>
                 </div>
-                <p className="font-bold text-gray-900 text-sm">ĐẠI DIỆN CÔNG TY CỔ PHẦN GLEADS</p>
+                <p className="font-bold text-gray-900 text-sm">ĐẠI DIỆN NGƯỜI LÀM BÁO GIÁ</p>
                 <p className="text-xs text-gray-600 mt-1">(Ký và đóng dấu)</p>
               </div>
             </div>

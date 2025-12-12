@@ -2,9 +2,22 @@ import gleadsLogo from '../assets/gleads logo.webp';
 
 interface AboutPageProps {
   aboutGleads: string;
+  serviceType: string;
+  pageTitle: string;
 }
 
-export default function AboutPage({ aboutGleads }: AboutPageProps) {
+export default function AboutPage({ aboutGleads, serviceType, pageTitle }: AboutPageProps) {
+  const getTitle = () => {
+    if (serviceType === 'website') {
+      return (
+        <>
+          <div>Website tổng quát, GLEADS Website.</div>
+          <div>Dịch vụ website của GLEADS</div>
+        </>
+      );
+    }
+    return 'VỀ GLEADS';
+  };
   return (
     <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column', backgroundColor: '#FDFBF5' }}>
       {/* Header */}
@@ -27,7 +40,7 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
       {/* Content */}
       <div style={{ flex: 1, overflow: 'hidden', paddingBottom: '50px' }}>
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-900">VỀ GLEADS</h2>
+          <h2 className="text-3xl font-bold text-gray-900">{pageTitle}</h2>
           {/* <p className="text-lg text-gray-600 mt-1">Comprehensive Communications & Marketing Agency</p> */}
         </div>
 
@@ -43,7 +56,7 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
 
                   // H1: ALL CAPS lines at start of paragraph
                   if (trimmed.match(/^[A-ZĐÀÁẢÃẠĂẰẮẲẴẶÂẦẤẨẪẬÈÉẺẼẸÊỀẾỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ\s,\.]+$/)) {
-                    return `<h3 class="text-lg font-black text-blue-700 mb-3 mt-5 uppercase tracking-wide">${trimmed}</h3>`;
+                    return `<h3 class="text-lg font-black text-gray-700 mb-3 mt-5 tracking-wide">${trimmed}</h3>`;
                   }
 
                   // H2: Lines starting with uppercase and ending with specific patterns
