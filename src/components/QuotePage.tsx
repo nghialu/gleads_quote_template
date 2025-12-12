@@ -20,18 +20,27 @@ interface QuotePageProps {
 // Component for table header
 const TableHeader = () => (
   <thead>
-    <tr className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-      <th className="text-left p-3 font-bold border border-blue-700" style={{ width: '50%' }}>
+    <tr style={{ background: 'linear-gradient(to right, #F6581C, #ffb380)', color: 'white' }}>
+      <th
+        className="text-left p-3 font-bold border"
+        style={{ width: '50%', borderColor: '#F6581C' }}
+      >
         THÔNG TIN DỊCH VỤ
-        <div className="text-xs font-normal text-blue-100 mt-0.5">Service Information</div>
+        <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Service Information</div>
       </th>
-      <th className="text-center p-3 font-bold border border-blue-700" style={{ width: '25%' }}>
+      <th
+        className="text-center p-3 font-bold border"
+        style={{ width: '25%', borderColor: '#F6581C' }}
+      >
         THỜI GIAN
-        <div className="text-xs font-normal text-blue-100 mt-0.5">Timeline</div>
+        <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Timeline</div>
       </th>
-      <th className="text-right p-3 font-bold border border-blue-700" style={{ width: '25%' }}>
+      <th
+        className="text-right p-3 font-bold border"
+        style={{ width: '25%', borderColor: '#F6581C' }}
+      >
         CHI PHÍ (VNĐ)
-        <div className="text-xs font-normal text-blue-100 mt-0.5">Cost</div>
+        <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Cost</div>
       </th>
     </tr>
   </thead>
@@ -47,7 +56,7 @@ const PageHeader = ({ pageNum }: { pageNum: number }) => (
           alt="Gleads Logo"
           className="h-8 w-auto"
         />
-        <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
+        {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
       </div>
       <div className="text-right text-xs text-gray-600">
         <p>Page {pageNum}</p>
@@ -173,7 +182,7 @@ export default function QuotePage({
           <>
             <div className="mb-5">
               <h2 className="text-3xl font-bold text-gray-900">BÁO GIÁ CHI TIẾT</h2>
-              <p className="text-lg text-gray-600 mt-1">Detailed Quotation</p>
+              {/* <p className="text-lg text-gray-600 mt-1">Detailed Quotation</p> */}
             </div>
 
             {/* Quote Info */}

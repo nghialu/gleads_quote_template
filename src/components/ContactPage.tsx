@@ -11,7 +11,7 @@ export default function ContactPage() {
                 overflow: 'visible',
                 padding: '48px',
                 boxSizing: 'border-box',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #F6581C 0%, #FF895C 100%)',
                 color: 'white',
             }}
         >
@@ -25,10 +25,7 @@ export default function ContactPage() {
                             alt="Gleads Logo"
                             className="h-8 w-auto"
                         />
-                        <p className="text-xs text-blue-100">Marketing & Communications Agency</p>
-                    </div>
-                    <div className="text-right text-xs text-blue-100">
-                        <p>Page 6</p>
+                        {/* <p className="text-xs text-blue-100">Marketing & Communications Agency</p> */}
                     </div>
                 </div>
 

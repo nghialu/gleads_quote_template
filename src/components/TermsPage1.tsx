@@ -33,7 +33,7 @@ export default function TermsPage1({
                                 alt="Gleads Logo"
                                 className="h-8 w-auto"
                             />
-                            <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
+                            {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
                         </div>
                         <div className="text-right text-xs text-gray-600">
                             <p>Page 4</p>
@@ -43,8 +43,8 @@ export default function TermsPage1({
 
                 {/* Main Title */}
                 <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900">ĐIỀU KHOẢN & CHÍNH SÁCH - PHẦN 1</h2>
-                    <p className="text-lg text-gray-600 mt-1">Terms & Policies - Part 1</p>
+                    <h2 className="text-3xl font-bold text-gray-900">GHI CHÚ và CHÍNH SÁCH BẢO HÀNH</h2>
+                    {/* <p className="text-lg text-gray-600 mt-1">Terms & Policies - Part 1</p> */}
                 </div>
 
                 {/* Content */}
@@ -55,9 +55,7 @@ export default function TermsPage1({
                             <span className="text-gray-700 mr-2">01.</span>
                             GHI CHÚ VỀ DỊCH VỤ
                         </h3>
-                        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                            <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{serviceNotes}</p>
-                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{serviceNotes}</p>
                     </div>
 
                     {/* Warranty Policy */}
@@ -66,9 +64,7 @@ export default function TermsPage1({
                             <span className="text-gray-700 mr-2">02.</span>
                             CHÍNH SÁCH BẢO HÀNH
                         </h3>
-                        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                            <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
-                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
                     </div>
                 </div>
             </div>

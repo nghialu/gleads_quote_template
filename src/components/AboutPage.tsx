@@ -16,7 +16,7 @@ export default function AboutPage({ aboutGleads }: AboutPageProps) {
               alt="Gleads Logo"
               className="h-8 w-auto"
             />
-            <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
+            {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
           </div>
           <div className="text-right text-xs text-gray-600">
             <p>Page 2</p>

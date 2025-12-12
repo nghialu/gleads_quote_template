@@ -33,7 +33,7 @@ export default function TermsPage2({
                                 alt="Gleads Logo"
                                 className="h-8 w-auto"
                             />
-                            <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
+                            {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
                         </div>
                         <div className="text-right text-xs text-gray-600">
                             <p>Page 5</p>
@@ -43,7 +43,7 @@ export default function TermsPage2({
 
                 {/* Main Title */}
                 <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900">THANH TOÁN & XÁC NHẬN</h2>
+                    <h2 className="text-3xl font-bold text-gray-900">THANH TOÁN và XÁC NHẬN</h2>
                     <p className="text-lg text-gray-600 mt-1">Payment & Confirmation</p>
                 </div>
 
@@ -55,9 +55,7 @@ export default function TermsPage2({
                             <span className="text-gray-700 mr-2">01.</span>
                             PHƯƠNG THỨC THANH TOÁN
                         </h3>
-                        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                            <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{paymentTerms}</p>
-                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{paymentTerms}</p>
                     </div>
 
                     {/* Bank Information */}
@@ -66,11 +64,7 @@ export default function TermsPage2({
                             <span className="text-gray-700 mr-2">02.</span>
                             THÔNG TIN TÀI KHOẢN NGÂN HÀNG
                         </h3>
-                        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                            <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
-                                {bankInfo}
-                            </p>
-                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{bankInfo}</p>
                     </div>
 
                     {/* Signature Section */}

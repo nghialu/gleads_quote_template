@@ -37,7 +37,7 @@ export default function TermsPage({
                 alt="Gleads Logo"
                 className="h-8 w-auto"
               />
-              <p className="text-xs text-gray-600">Marketing & Communications Agency</p>
+              {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
             </div>
             <div className="text-right text-xs text-gray-600">
               <p>Page 4</p>
@@ -61,9 +61,7 @@ export default function TermsPage({
               </span>
               GHI CHÚ VỀ DỊCH VỤ
             </h3>
-            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
-              <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{serviceNotes}</p>
-            </div>
+            <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{serviceNotes}</p>
           </div>
 
           {/* Warranty Policy */}
@@ -74,9 +72,7 @@ export default function TermsPage({
               </span>
               CHÍNH SÁCH BẢO HÀNH
             </h3>
-            <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-600">
-              <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
-            </div>
+            <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
           </div>
 
           {/* Payment Terms */}
@@ -87,9 +83,7 @@ export default function TermsPage({
               </span>
               PHƯƠNG THỨC THANH TOÁN
             </h3>
-            <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-600">
-              <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{paymentTerms}</p>
-            </div>
+            <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">{paymentTerms}</p>
           </div>
 
           {/* Bank Information */}
@@ -100,11 +94,7 @@ export default function TermsPage({
               </span>
               THÔNG TIN TÀI KHOẢN NGÂN HÀNG
             </h3>
-            <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-600">
-              <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line font-mono">
-                {bankInfo}
-              </p>
-            </div>
+            <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line font-mono">{bankInfo}</p>
           </div>
 
           {/* Contact Information */}
@@ -115,10 +105,10 @@ export default function TermsPage({
               </span>
               THÔNG TIN LIÊN HỆ
             </h3>
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 rounded-lg">
+            <div style={{ background: 'linear-gradient(to right, #F6581C, #FF895C)' }} className="text-white p-4 rounded-lg">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-blue-100 text-xs mb-1">CÔNG TY CỔ PHẦN GLEADS</p>
+                  <p className="text-xs mb-1" style={{ color: '#FFE5D1' }}>CÔNG TY CỔ PHẦN GLEADS</p>
                   <p className="font-bold text-base mb-2">GLEADS PTE. LTD.</p>
                   <div className="space-y-1 text-xs">
                     <p>
@@ -133,7 +123,7 @@ export default function TermsPage({
                   <p>📧 service@gleadsglobal.com</p>
                   <p>📞 +65 3138 1666</p>
                   <p>🌐 www.gleadsglobal.com</p>
-                  <p className="mt-2 text-xs text-blue-200">
+                  <p className="mt-2 text-xs" style={{ color: '#FFE5D1' }}>
                     UEN: 202231106G | ISO/IEC 27001
                   </p>
                 </div>

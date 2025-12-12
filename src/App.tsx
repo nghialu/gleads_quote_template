@@ -5,8 +5,8 @@ import QuotePreview from './components/QuotePreview';
 
 function App() {
   // Proposal Details
-  const [proposalTitle, setProposalTitle] = useState('DIGITAL MARKETING SOLUTION PROPOSAL');
-  const [solutionOverview, setSolutionOverview] = useState('Comprehensive digital marketing strategy to elevate your brand presence and drive sustainable business growth through SEO, Performance Ads, Content Marketing, and Creative Design.');
+  const [proposalTitle, setProposalTitle] = useState('BÁO GIÁ GIẢI PHÁP TRUYỀN THÔNG THƯƠNG HIỆU TOÀN DIỆN');
+  const [solutionOverview, setSolutionOverview] = useState('Giải pháp Digital Marketing toàn diện giúp nâng tầm hiện diện thương hiệu và thúc đẩy tăng trưởng bền vững thông qua SEO, Quảng cáo Hiệu suất, Content Marketing và Thiết kế Sáng tạo.');
 
   // Client Information
   const [clientName, setClientName] = useState('');
