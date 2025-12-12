@@ -103,7 +103,7 @@ export default function TermsPage({
               <span className="bg-cyan-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs mr-2">
                 05
               </span>
-              THÔNG TIN LIÊN HỆ
+              THÔNG TIN LIÊN HỆ.
             </h3>
             <div style={{ background: 'linear-gradient(to right, #F6581C, #FF895C)' }} className="text-white p-4 rounded-lg">
               <div className="grid grid-cols-2 gap-4">

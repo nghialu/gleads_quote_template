@@ -388,9 +388,9 @@ export default function QuoteForm({
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
             >
               <option value="custom">Tùy chỉnh (nhập thủ công)</option>
-              <option value="content">Content Marketing</option>
-              <option value="design">Design and Creative</option>
-              <option value="website">Website Development</option>
+              <option value="content">Dịch vụ nội dung số</option>
+              <option value="design">Dịch vụ thiết kế </option>
+              <option value="website">Dịch vụ thiết kế website</option>
             </select>
             <p className="text-xs text-gray-500 mt-1">
               ⚡ Chọn loại dịch vụ để tự động điền nội dung mẫu cho các trường bên dưới

@@ -28,21 +28,21 @@ const TableHeader = () => (
         style={{ width: '50%', borderColor: '#F6581C' }}
       >
         THÔNG TIN DỊCH VỤ
-        <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Service Information</div>
+        {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Service Information</div> */}
       </th>
       <th
         className="text-center p-3 font-bold border"
         style={{ width: '25%', borderColor: '#F6581C' }}
       >
         THỜI GIAN
-        <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Timeline</div>
+        {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Timeline</div> */}
       </th>
       <th
         className="text-right p-3 font-bold border"
         style={{ width: '25%', borderColor: '#F6581C' }}
       >
         CHI PHÍ (VNĐ)
-        <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Cost</div>
+        {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Cost</div> */}
       </th>
     </tr>
   </thead>
@@ -79,7 +79,7 @@ const TableRow = ({ item, index }: { item: Item; index: number }) => (
       </p>
     </td>
     <td className="p-3 border border-gray-300 text-center align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-      <p className="text-gray-900 text-sm">{item.timeline || 'N/A'}</p>
+      <p className="text-gray-900 text-sm">{item.timeline || 'Không có'}</p>
     </td>
     <td className="p-3 border border-gray-300 text-right align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
       <p className="font-bold text-gray-900 text-sm">
@@ -212,7 +212,7 @@ export default function QuotePage({
                       month: '2-digit',
                       year: 'numeric',
                     })
-                    : 'N/A'}
+                    : 'Không có'}
                 </p>
               </div>
             </div>
@@ -275,7 +275,7 @@ export default function QuotePage({
                       <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 total-row" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
                         <td className="p-3 border border-gray-300 font-bold text-gray-900" colSpan={2}>
                           TỔNG CHI PHÍ DỰ KIẾN
-                          <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div>
+                          {/* <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div> */}
                         </td>
                         <td className="p-3 border border-gray-300 text-right">
                           <p className="text-xl font-bold text-black">

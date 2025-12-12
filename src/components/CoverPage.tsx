@@ -89,7 +89,7 @@ export default function CoverPage({
               </p>
               <p className="text-gray-900 text-xs font-medium leading-relaxed">
                 service@gleadsglobal.com<br />
-                +65 3138 1666
+                (+84)28 6272 2262
               </p>
             </div>
           </div>

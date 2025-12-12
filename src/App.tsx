@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import QuoteForm from './components/QuoteForm';
 import QuotePreview from './components/QuotePreview';
@@ -18,6 +18,15 @@ function App() {
   // Quote Details
   const [quoteDate, setQuoteDate] = useState(new Date().toISOString().split('T')[0]);
   const [validUntil, setValidUntil] = useState('');
+
+  // Auto-calculate validUntil when quoteDate changes (quoteDate + 30 days)
+  useEffect(() => {
+    if (quoteDate) {
+      const date = new Date(quoteDate);
+      date.setDate(date.getDate() + 30);
+      setValidUntil(date.toISOString().split('T')[0]);
+    }
+  }, [quoteDate]);
 
   // Service Items
   const [items, setItems] = useState<Array<{
@@ -48,7 +57,7 @@ GIẢI PHÁP NỘI DUNG LINH HOẠT CHO MỌI NGÀNH NGHỀ.
 
 • Giải pháp cho SEO và quảng cáo. GLEADS phát triển nội dung phù hợp với chiến dịch truyền thông, quảng cáo tìm kiếm, định vị thương hiệu và thói quen tiếp cận thông tin của khách hàng mục tiêu, tối ưu theo chuẩn công cụ tìm kiếm, đồng thời đảm bảo dễ hiểu và hấp dẫn đối với người đọc.
 
-• Bài viết mẫu về giới thiệu doanh nghiệp, giới thiệu dịch vụ, mô tả sản phẩm, bài PR đăng báo, bài mạng xã hội, kịch bản video ngắn phục vụ quảng cáo.
+• Bài viết mẫu. Về giới thiệu doanh nghiệp, giới thiệu dịch vụ, mô tả sản phẩm, bài PR đăng báo, bài mạng xã hội, kịch bản video ngắn phục vụ quảng cáo.
 
 • Lồng ghép thông điệp thương hiệu. Không chỉ mô tả sản phẩm và dịch vụ, GLEADS giúp truyền tải câu chuyện thương hiệu theo chủ đề, theo phân khúc, theo mùa bán hàng, dịp lễ hội.
 
@@ -60,7 +69,7 @@ GLEADS đã hợp tác với nhiều doanh nghiệp trong các lĩnh vực, ngà
 
 • Bám sát nhu cầu tìm kiếm của khách hàng, đối tác tiềm năng. Đội ngũ biên tập viên GLEADS am hiểu nhiều lĩnh vực khó như pháp chế, tài chính, giáo dục, sản xuất công nghiệp.
 
-• Đảm bảo khả năng triển khai SEO nhanh khi cần, trong đó hệ thống bài viết được GLEADS phát triển trên tiền đề tối ưu tìm kiếm cho doanh nghiệp, nhãn hàng.
+• Đảm bảo khả năng triển khai SEO nhanh khi cần. Trong đó hệ thống bài viết được GLEADS phát triển trên tiền đề tối ưu tìm kiếm cho doanh nghiệp, nhãn hàng.
 
 GLEADS cung cấp giải pháp phát triển nội dung toàn diện cho doanh nghiệp thuộc nhiều lĩnh vực khác nhau. Chúng tôi xây dựng hệ thống bài viết chuẩn SEO, kịch bản video, nội dung mạng xã hội, thông tin giới thiệu thương hiệu và sản phẩm giúp tăng khả năng tiếp cận và giữ chân khách hàng.`,
       serviceNotes: `Bảng giá trên đây mang tính tham khảo cho các bài viết với nội dung chuẩn SEO, bố cục rõ ràng, phù hợp với các kênh truyền thông số và có khả năng tiếp cận tốt trên công cụ tìm kiếm. GLEADS cung cấp nhiều tùy chỉnh đa dạng hơn cho các nội dung chuyên sâu như bài viết chuyên ngành, bài PR, nội dung cho chiến dịch quảng cáo, nội dung bán hàng, và nội dung truyền thông thương hiệu. Chúng tôi cũng triển khai các gói dịch vụ viết bài định kỳ, tối ưu hóa nội dung theo từng giai đoạn phát triển của doanh nghiệp và tích hợp với các nền tảng tiếp thị trực tuyến. Quý khách vui lòng liên hệ đại diện chăm sóc khách hàng của GLEADS để được tư vấn chi tiết và hỗ trợ nhanh chóng.
@@ -101,9 +110,7 @@ GLEADS đã hợp tác với nhiều doanh nghiệp trong các lĩnh vực, ngà
 • Hệ thống thanh toán và giao hàng được tích hợp linh hoạt. Bộ phận bán hàng dễ dàng nhận đơn và xử lý thanh toán nhanh chóng từ khách hàng.
 
 GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng sở hữu website chất lượng cao chỉ trong thời gian ngắn với đầy đủ tính năng cần thiết để vận hành hiệu quả.`,
-      serviceNotes: `- Lưu ý:
-
-• Phạm vi chỉnh sửa: Có thể thay đổi: màu sắc, kiểu chữ, cách sắp xếp. Không thay đổi: đường nét, kiểu dáng logo hoặc vẽ thêm hình bổ sung.
+      serviceNotes: `• Phạm vi chỉnh sửa: Có thể thay đổi: màu sắc, kiểu chữ, cách sắp xếp. Không thay đổi: đường nét, kiểu dáng logo hoặc vẽ thêm hình bổ sung.
 
 • Nếu quá số lần hiệu chỉnh giới hạn, mỗi lần chỉnh sửa tiếp theo tính thêm 20% phí dịch vụ
 
@@ -133,16 +140,14 @@ GIAO DIỆN MẪU VÀ TÍNH NĂNG NỔI BẬT.
 
 GLEADS đã hợp tác với nhiều doanh nghiệp trong các lĩnh vực, ngành nghề khác nhau, thiết kế nhiều giao diện website tinh tế, dễ nhìn tạo ra ấn tượng tốt ngay từ lần truy cập đầu tiên.
 
-• Website tích hợp danh mục sản phẩm, dịch vụ, dự án rõ ràng dễ dùng cho phép doanh nghiệp cập nhật sản phẩm, dịch vụ, thông tin các dự án và giá cả nhanh chóng khi có thay đổi.
+• Danh mục rõ ràng. Website tích hợp danh mục sản phẩm, dịch vụ, dự án rõ ràng dễ dùng cho phép doanh nghiệp cập nhật sản phẩm, dịch vụ, thông tin các dự án và giá cả nhanh chóng khi có thay đổi.
 
-• Khách hàng có thể đặt hàng trực tiếp trên website và nhận xác nhận tự động giúp tiết kiệm thời gian cho cả doanh nghiệp và khách cá nhân, khách doanh nghiệp.
+• Đặt hàng trực tiếp. Khách hàng có thể đặt hàng trực tiếp trên website và nhận xác nhận tự động giúp tiết kiệm thời gian cho cả doanh nghiệp và khách cá nhân, khách doanh nghiệp.
 
-• Hệ thống thanh toán và giao hàng được tích hợp linh hoạt giúp bộ phận bán hàng dễ dàng nhận đơn và xử lý thanh toán nhanh chóng từ khách hàng.
+• Thanh toán linh hoạt.Hệ thống thanh toán và giao hàng được tích hợp linh hoạt giúp bộ phận bán hàng dễ dàng nhận đơn và xử lý thanh toán nhanh chóng từ khách hàng.
 
 GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng sở hữu website chất lượng cao chỉ trong thời gian ngắn với đầy đủ tính năng cần thiết để vận hành hiệu quả.`,
-      serviceNotes: `
-
-• Thời gian thực hiện website là từ 07 đến 10 ngày tùy thuộc vào tình hình thực tế và tốc độ phản hồi của khách hàng trong quá trình trao đổi.
+      serviceNotes: `• Thời gian thực hiện website là từ 07 đến 10 ngày tùy thuộc vào tình hình thực tế và tốc độ phản hồi của khách hàng trong quá trình trao đổi.
 
 • Giá dịch vụ được tính bằng đồng Việt Nam và việc triển khai sẽ được tiến hành tại địa điểm mà hai bên đã thống nhất trước đó.
 
@@ -294,7 +299,16 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
       }
 
       // Save PDF
-      const filename = `GLEADS_Proposal_${new Date().toLocaleDateString('vi-VN').replace(/\//g, '-')}.pdf`;
+      const clientNamePart = clientName || clientCompany || 'Client';
+      const serviceTypePart = serviceType === 'custom'
+        ? (items[0]?.service || 'Service')
+        : serviceType.charAt(0).toUpperCase() + serviceType.slice(1);
+      const datePart = new Date().toLocaleDateString('vi-VN', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      }).split('/').join('');
+      const filename = `${clientNamePart} - ${serviceTypePart} - ${datePart}.pdf`;
       pdf.save(filename);
 
     } catch (error) {

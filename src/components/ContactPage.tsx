@@ -42,26 +42,26 @@ export default function ContactPage() {
                             {/* Company Info */}
                             <div className="text-center">
                                 <h3 className="text-2xl font-bold text-white mb-4">GLEADS PTE. LTD.</h3>
-                                <div className="space-y-3 text-white">
-                                    <div className="flex items-center justify-center space-x-3">
+                                <div className="space-y-3 text-white text-left">
+                                    <div className="flex items-start space-x-3">
                                         <span className="text-2xl">🏢</span>
-                                        <div className="text-left">
+                                        <div>
                                             <p className="font-semibold">Văn Phòng Singapore</p>
-                                            <p className="text-sm text-blue-100">9 Raffles Place, #29-05, Singapore 048619</p>
+                                            <p className="text-sm text-blue-100 ml-0">9 Raffles Place, #29-05, Singapore 048619</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center justify-center space-x-3">
+                                    <div className="flex items-start space-x-3">
                                         <span className="text-2xl">🏢</span>
-                                        <div className="text-left">
+                                        <div>
                                             <p className="font-semibold">Văn Phòng Việt Nam</p>
-                                            <p className="text-sm text-blue-100">39-41 Ngo Thi Bi St., Ho Chi Minh City</p>
+                                            <p className="text-sm text-blue-100 ml-0">39-41 Ngo Thi Bi St., Ho Chi Minh City</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center justify-center space-x-3">
+                                    <div className="flex items-start space-x-3">
                                         <span className="text-2xl">📋</span>
-                                        <div className="text-left">
+                                        <div>
                                             <p className="font-semibold">Mã Số Thuế</p>
-                                            <p className="text-sm text-blue-100">0314736707</p>
+                                            <p className="text-sm text-blue-100 ml-0">0314736707</p>
                                         </div>
                                     </div>
                                 </div>
