@@ -57,7 +57,7 @@ export default function CoverPage({
 
         {/* Footer - Info Grid */}
         <div className="px-8 pb-8">
-          <div className="grid grid-cols-3 gap-6">
+          <div className="flex justify-between items-end">
             {/* Prepared For */}
             <div>
               <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
@@ -69,7 +69,7 @@ export default function CoverPage({
             </div>
 
             {/* Date */}
-            <div>
+            <div className="text-right">
               <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
                 DATE
               </p>
@@ -79,17 +79,6 @@ export default function CoverPage({
                   month: '2-digit',
                   year: 'numeric',
                 }).replace(/\//g, '/')}
-              </p>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
-                CONTACT
-              </p>
-              <p className="text-gray-900 text-xs font-medium leading-relaxed">
-                service@gleadsglobal.com<br />
-                (+84)28 6272 2262
               </p>
             </div>
           </div>
