@@ -165,7 +165,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
     custom: {
       aboutGleads: 'GLEADS là công ty truyền thông và marketing tổng hợp, cung cấp các giải pháp sáng tạo và chiến lược hiệu quả cho các thương hiệu. Chúng tôi tập hợp đội ngũ chuyên gia giàu kinh nghiệm, luôn đồng hành cùng doanh nghiệp trong việc xây dựng hình ảnh và nâng cao nhận diện thương hiệu.',
       serviceNotes: 'GLEADS cam kết cung cấp dịch vụ chuyên nghiệp, minh bạch và hiệu quả cao. Đội ngũ chuyên gia của chúng tôi sẽ đồng hành cùng doanh nghiệp trong suốt quá trình thực hiện dự án.',
-      warrantyPolicy: '- Bảo hành kỹ thuật trong vòng 12 tháng\n- Hỗ trợ sửa lỗi và cập nhật miễn phí\n- Tư vấn và training sử dụng'
+      warrantyPolicy: '• Bảo hành kỹ thuật trong vòng 12 tháng\n• Hỗ trợ sửa lỗi và cập nhật miễn phí\n• Tư vấn và training sử dụng'
     }
   };
 
@@ -173,7 +173,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
   const [aboutGleads, setAboutGleads] = useState(serviceTemplates.custom.aboutGleads);
   const [serviceNotes, setServiceNotes] = useState(serviceTemplates.custom.serviceNotes);
   const [warrantyPolicy, setWarrantyPolicy] = useState(serviceTemplates.custom.warrantyPolicy);
-  const [paymentTerms, setPaymentTerms] = useState('- Đợt 1: 40% khi ký hợp đồng\n- Đợt 2: 30% khi hoàn thành 50% dự án\n- Đợt 3: 30% khi nghiệm thu và bàn giao');
+  const [paymentTerms, setPaymentTerms] = useState('• Đợt 1: 40% khi ký hợp đồng\n• Đợt 2: 30% khi hoàn thành 50% dự án\n• Đợt 3: 30% khi nghiệm thu và bàn giao');
   const [bankInfo, setBankInfo] = useState('Ngân hàng: Techcombank, chi nhánh Phú Mỹ Hưng\nTên tài khoản: CÔNG TY CỔ PHẦN GLEADS\nSố tài khoản: 1913 2044 509 568');
 
   // Page Headings
