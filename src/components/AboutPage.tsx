@@ -22,7 +22,7 @@ export default function AboutPage({ aboutGleads, serviceType, pageTitle }: About
     <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column', backgroundColor: '#FDFBF5' }}>
       {/* Header */}
       <div className="mb-6">
-        <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
+        <div className="flex justify-between items-center border-b-2 pb-3" style={{ borderBottomColor: '#F6581C' }}>
           <div>
             <img
               src={gleadsLogo}

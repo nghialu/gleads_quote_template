@@ -30,7 +30,7 @@ export default function TermsPage1({
             <div style={{ flex: 1, overflow: 'hidden', paddingBottom: '50px' }}>
                 {/* Header */}
                 <div className="mb-6">
-                    <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
+                    <div className="flex justify-between items-center border-b-2 pb-3" style={{ borderBottomColor: '#F6581C' }}>
                         <div>
                             <img
                                 src={gleadsLogo}

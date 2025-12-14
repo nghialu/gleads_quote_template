@@ -5,7 +5,7 @@ export default function CredibilityPage() {
         <div className="page-break w-[210mm] h-[297mm] bg-white p-12 flex flex-col">
             {/* Header */}
             <div className="mb-6">
-                <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
+                <div className="flex justify-between items-center border-b-2 pb-3" style={{ borderBottomColor: '#F6581C' }}>
                     <div>
                         <img
                             src={gleadsLogo}
@@ -106,9 +106,9 @@ export default function CredibilityPage() {
 
                 {/* Trust Message */}
                 <div className="text-center">
-                    <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-lg">
+                    <div className="bg-orange-50 border-l-4 p-4 rounded-lg" style={{ borderLeftColor: '#F6581C' }}>
                         <p className="text-sm text-gray-700 leading-relaxed">
-                            <strong className="text-blue-700">GLEADS</strong> tự hào là đối tác tin cậy của hơn 200 doanh nghiệp
+                            <strong className="text-orange-700">GLEADS</strong> tự hào là đối tác tin cậy của hơn 200 doanh nghiệp
                             trong và ngoài nước. Chúng tôi cam kết mang đến giải pháp marketing hiệu quả,
                             đo lường được và tăng trưởng bền vững cho mọi thương hiệu.
                         </p>

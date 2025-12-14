@@ -51,7 +51,7 @@ const TableHeader = () => (
 // Component for page header
 const PageHeader = ({ pageNum }: { pageNum: number }) => (
   <div className="mb-6">
-    <div className="flex justify-between items-center border-b-2 border-blue-600 pb-3">
+    <div className="flex justify-between items-center border-b-2 pb-3" style={{ borderBottomColor: '#F6581C' }}>
       <div>
         <img
           src={gleadsLogo}

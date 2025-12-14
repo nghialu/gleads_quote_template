@@ -179,9 +179,105 @@ export default function QuoteForm({
         </div>
       </div>
 
+      <div className="bg-white rounded-xl shadow-sm border border-green-200 p-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <span className="bg-green-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">3</span>
+          Thông Tin Công Ty (Custom theo loại dịch vụ)
+        </h2>
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Loại dịch vụ <span className="text-red-500">*</span>
+            </label>
+            <select
+              value={serviceType}
+              onChange={(e) => handleServiceTypeChange(e.target.value)}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+            >
+              <option value="custom">Tùy chỉnh (nhập thủ công)</option>
+              <option value="content">Dịch vụ nội dung số</option>
+              <option value="design">Dịch vụ thiết kế </option>
+              <option value="website">Dịch vụ thiết kế website</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">
+              ⚡ Chọn loại dịch vụ để tự động điền nội dung mẫu cho các trường bên dưới
+            </p>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-slate-700">
+                Về GLEADS (Page 2)
+              </label>
+              <button
+                onClick={() => setAboutGleads('')}
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                title="Xóa nội dung"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
+            <textarea
+              value={aboutGleads}
+              onChange={(e) => setAboutGleads(e.target.value)}
+              rows={5}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
+              placeholder="Giới thiệu về công ty, năng lực và định hướng..."
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              📄 Hiển thị ở trang 2 - Về GLEADS
+            </p>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-slate-700">
+                Ghi chú về dịch vụ (Page 4)
+              </label>
+              <button
+                onClick={() => setServiceNotes('')}
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                title="Xóa nội dung"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
+            <textarea
+              value={serviceNotes}
+              onChange={(e) => setServiceNotes(e.target.value)}
+              rows={3}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
+              placeholder="Cam kết và ghi chú về dịch vụ..."
+            />
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-slate-700">
+                Chính sách bảo hành (Page 4)
+              </label>
+              <button
+                onClick={() => setWarrantyPolicy('')}
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                title="Xóa nội dung"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
+            <textarea
+              value={warrantyPolicy}
+              onChange={(e) => setWarrantyPolicy(e.target.value)}
+              rows={3}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
+              placeholder="Chi tiết chính sách bảo hành..."
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="bg-white rounded-xl shadow-sm border border-blue-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">2</span>
+          <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">4</span>
           Thông Tin Khách Hàng
         </h2>
         <div className="space-y-4">
@@ -242,7 +338,7 @@ export default function QuoteForm({
 
       <div className="bg-white rounded-xl shadow-sm border border-blue-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">3</span>
+          <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">5</span>
           Chi Tiết Báo Giá
         </h2>
         <div className="grid grid-cols-2 gap-4">
@@ -369,102 +465,6 @@ export default function QuoteForm({
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div className="bg-white rounded-xl shadow-sm border border-green-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <span className="bg-green-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">5</span>
-          Thông Tin Công Ty (Custom theo loại dịch vụ)
-        </h2>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Loại dịch vụ <span className="text-red-500">*</span>
-            </label>
-            <select
-              value={serviceType}
-              onChange={(e) => handleServiceTypeChange(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-            >
-              <option value="custom">Tùy chỉnh (nhập thủ công)</option>
-              <option value="content">Dịch vụ nội dung số</option>
-              <option value="design">Dịch vụ thiết kế </option>
-              <option value="website">Dịch vụ thiết kế website</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">
-              ⚡ Chọn loại dịch vụ để tự động điền nội dung mẫu cho các trường bên dưới
-            </p>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className="block text-sm font-medium text-slate-700">
-                Về GLEADS (Page 2)
-              </label>
-              <button
-                onClick={() => setAboutGleads('')}
-                className="text-gray-400 hover:text-red-500 transition-colors"
-                title="Xóa nội dung"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-            <textarea
-              value={aboutGleads}
-              onChange={(e) => setAboutGleads(e.target.value)}
-              rows={5}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
-              placeholder="Giới thiệu về công ty, năng lực và định hướng..."
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              📄 Hiển thị ở trang 2 - Về GLEADS
-            </p>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className="block text-sm font-medium text-slate-700">
-                Ghi chú về dịch vụ (Page 4)
-              </label>
-              <button
-                onClick={() => setServiceNotes('')}
-                className="text-gray-400 hover:text-red-500 transition-colors"
-                title="Xóa nội dung"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-            <textarea
-              value={serviceNotes}
-              onChange={(e) => setServiceNotes(e.target.value)}
-              rows={3}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
-              placeholder="Cam kết và ghi chú về dịch vụ..."
-            />
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className="block text-sm font-medium text-slate-700">
-                Chính sách bảo hành (Page 4)
-              </label>
-              <button
-                onClick={() => setWarrantyPolicy('')}
-                className="text-gray-400 hover:text-red-500 transition-colors"
-                title="Xóa nội dung"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-            <textarea
-              value={warrantyPolicy}
-              onChange={(e) => setWarrantyPolicy(e.target.value)}
-              rows={3}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
-              placeholder="Chi tiết chính sách bảo hành..."
-            />
-          </div>
         </div>
       </div>
 
