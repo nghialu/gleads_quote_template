@@ -61,7 +61,7 @@ export default function CoverPage({
             {/* Prepared For */}
             <div>
               <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
-                PREPARE FOR
+                QUÝ KHÁCH HÀNG
               </p>
               <p className="text-gray-900 text-base font-bold">
                 {clientCompany || 'Client Company'}
@@ -71,7 +71,7 @@ export default function CoverPage({
             {/* Date */}
             <div className="text-right">
               <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
-                DATE
+                NGÀY BÁO GIÁ
               </p>
               <p className="text-gray-900 text-base font-bold">
                 {new Date(quoteDate).toLocaleDateString('en-GB', {
