@@ -17,6 +17,7 @@ interface QuotePageProps {
   total: number;
   clientCompany: string;
   pageTitle: string;
+  companyEmail: string;
 }
 
 // Table header component for reuse across pages
@@ -96,6 +97,7 @@ export default function QuotePage({
   total,
   clientCompany,
   pageTitle,
+  companyEmail,
 }: QuotePageProps) {
   // Constants for page layout (in mm)
   const PAGE_HEIGHT_MM = 297;
@@ -308,7 +310,7 @@ export default function QuotePage({
         >
           <div className="flex justify-between items-center text-xs text-gray-600">
             <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-            <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
+            <p>www.gleadsglobal.com | {companyEmail}</p>
           </div>
         </div>
       </div>

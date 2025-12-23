@@ -9,11 +9,10 @@ function App() {
   const [solutionOverview, setSolutionOverview] = useState('Giải pháp Digital Marketing toàn diện giúp nâng tầm hiện diện thương hiệu và thúc đẩy tăng trưởng bền vững thông qua SEO, Quảng cáo Hiệu suất, Content Marketing và Thiết kế Sáng tạo.');
 
   // Client Information
-  const [clientName, setClientName] = useState('');
   const [clientCompany, setClientCompany] = useState('');
-  const [clientAddress, setClientAddress] = useState('');
-  const [clientEmail, setClientEmail] = useState('');
-  const [clientPhone, setClientPhone] = useState('');
+
+  // Company Information
+  const [companyEmail, setCompanyEmail] = useState('service@gleadsglobal.com');
 
   // Quote Details
   const [quoteDate, setQuoteDate] = useState(new Date().toISOString().split('T')[0]);
@@ -299,7 +298,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
       }
 
       // Save PDF
-      const clientNamePart = clientName || clientCompany || 'Client';
+      const clientNamePart = clientCompany || 'Client';
       const serviceTypePart = serviceType === 'custom'
         ? (items[0]?.service || 'Service')
         : serviceType.charAt(0).toUpperCase() + serviceType.slice(1);
@@ -347,16 +346,10 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
             setProposalTitle={setProposalTitle}
             solutionOverview={solutionOverview}
             setSolutionOverview={setSolutionOverview}
-            clientName={clientName}
-            setClientName={setClientName}
             clientCompany={clientCompany}
             setClientCompany={setClientCompany}
-            clientAddress={clientAddress}
-            setClientAddress={setClientAddress}
-            clientEmail={clientEmail}
-            setClientEmail={setClientEmail}
-            clientPhone={clientPhone}
-            setClientPhone={setClientPhone}
+            companyEmail={companyEmail}
+            setCompanyEmail={setCompanyEmail}
             quoteDate={quoteDate}
             setQuoteDate={setQuoteDate}
             validUntil={validUntil}
@@ -391,11 +384,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
             ref={previewRef}
             proposalTitle={proposalTitle}
             solutionOverview={solutionOverview}
-            clientName={clientName}
             clientCompany={clientCompany}
-            clientAddress={clientAddress}
-            clientEmail={clientEmail}
-            clientPhone={clientPhone}
             quoteDate={quoteDate}
             validUntil={validUntil}
             items={items}
@@ -405,6 +394,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
             warrantyPolicy={warrantyPolicy}
             paymentTerms={paymentTerms}
             bankInfo={bankInfo}
+            companyEmail={companyEmail}
             serviceType={serviceType}
             aboutPageTitle={aboutPageTitle}
             quotePageTitle={quotePageTitle}

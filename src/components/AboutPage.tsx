@@ -4,9 +4,10 @@ interface AboutPageProps {
   aboutGleads: string;
   serviceType: string;
   pageTitle: string;
+  companyEmail: string;
 }
 
-export default function AboutPage({ aboutGleads, serviceType, pageTitle }: AboutPageProps) {
+export default function AboutPage({ aboutGleads, serviceType, pageTitle, companyEmail }: AboutPageProps) {
   const getTitle = () => {
     if (serviceType === 'website') {
       return (
@@ -92,7 +93,7 @@ export default function AboutPage({ aboutGleads, serviceType, pageTitle }: About
       <div style={{ position: 'absolute', bottom: '48px', left: '48px', right: '48px', borderTop: '2px solid #e5e7eb', paddingTop: '12px', zIndex: 10 }}>
         <div className="flex justify-between items-center text-xs text-gray-600">
           <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-          <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
+          <p>www.gleadsglobal.com | {companyEmail}</p>
         </div>
       </div>
     </div>

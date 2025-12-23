@@ -19,11 +19,7 @@ interface Item {
 interface QuotePreviewProps {
   proposalTitle: string;
   solutionOverview: string;
-  clientName: string;
   clientCompany: string;
-  clientAddress: string;
-  clientEmail: string;
-  clientPhone: string;
   quoteDate: string;
   validUntil: string;
   items: Item[];
@@ -33,6 +29,7 @@ interface QuotePreviewProps {
   warrantyPolicy: string;
   paymentTerms: string;
   bankInfo: string;
+  companyEmail: string;
   serviceType: string;
   aboutPageTitle: string;
   quotePageTitle: string;
@@ -43,11 +40,7 @@ interface QuotePreviewProps {
 const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function QuotePreview({
   proposalTitle,
   solutionOverview,
-  clientName,
   clientCompany,
-  clientAddress,
-  clientEmail,
-  clientPhone,
   quoteDate,
   validUntil,
   items,
@@ -57,6 +50,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
   warrantyPolicy,
   paymentTerms,
   bankInfo,
+  companyEmail,
   serviceType,
   aboutPageTitle,
   quotePageTitle,
@@ -70,12 +64,11 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         proposalTitle={proposalTitle}
         solutionOverview={solutionOverview}
         clientCompany={clientCompany}
-        clientName={clientName}
         quoteDate={quoteDate}
       />
 
       {/* Page 2: About Gleads - Only show if content exists */}
-      {aboutGleads && <AboutPage aboutGleads={aboutGleads} serviceType={serviceType} pageTitle={aboutPageTitle} />}
+      {aboutGleads && <AboutPage aboutGleads={aboutGleads} serviceType={serviceType} pageTitle={aboutPageTitle} companyEmail={companyEmail} />}
 
       {/* Page 3: Quote Details */}
       <QuotePage
@@ -85,6 +78,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         total={total}
         clientCompany={clientCompany}
         pageTitle={quotePageTitle}
+        companyEmail={companyEmail}
       />
 
       {/* Page 4: Terms and Policies - Part 1 */}
@@ -93,6 +87,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         warrantyPolicy={warrantyPolicy}
         serviceType={serviceType}
         pageTitle={termsPageTitle}
+        companyEmail={companyEmail}
       />
 
       {/* Page 5: Terms and Policies - Part 2 */}
@@ -100,10 +95,11 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
         paymentTerms={paymentTerms}
         bankInfo={bankInfo}
         pageTitle={paymentPageTitle}
+        companyEmail={companyEmail}
       />
 
       {/* Page 6: Contact Information */}
-      <ContactPage />
+      <ContactPage companyEmail={companyEmail} />
     </div>
   );
 });

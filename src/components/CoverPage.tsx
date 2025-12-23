@@ -5,7 +5,6 @@ interface CoverPageProps {
   proposalTitle: string;
   solutionOverview: string;
   clientCompany: string;
-  clientName: string;
   quoteDate: string;
 }
 
@@ -13,7 +12,6 @@ export default function CoverPage({
   proposalTitle,
   solutionOverview,
   clientCompany,
-  clientName,
   quoteDate,
 }: CoverPageProps) {
   return (

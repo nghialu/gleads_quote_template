@@ -1,6 +1,10 @@
 import gleadsLogo from '../assets/gleads logo.webp';
 
-export default function ContactPage() {
+interface ContactPageProps {
+    companyEmail: string;
+}
+
+export default function ContactPage({ companyEmail }: ContactPageProps) {
     return (
         <div
             className="page-break contact-page w-[210mm] h-[297mm] bg-white"
@@ -78,7 +82,7 @@ export default function ContactPage() {
                                         <span className="text-2xl">📧</span>
                                         <div className="text-left">
                                             <p className="font-semibold">Email</p>
-                                            <p className="text-sm text-blue-100">service@gleadsglobal.com</p>
+                                            <p className="text-sm text-blue-100">{companyEmail}</p>
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-[auto_1fr] gap-3 items-center">

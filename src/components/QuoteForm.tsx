@@ -15,16 +15,10 @@ interface QuoteFormProps {
   setProposalTitle: (value: string) => void;
   solutionOverview: string;
   setSolutionOverview: (value: string) => void;
-  clientName: string;
-  setClientName: (value: string) => void;
   clientCompany: string;
   setClientCompany: (value: string) => void;
-  clientAddress: string;
-  setClientAddress: (value: string) => void;
-  clientEmail: string;
-  setClientEmail: (value: string) => void;
-  clientPhone: string;
-  setClientPhone: (value: string) => void;
+  companyEmail: string;
+  setCompanyEmail: (value: string) => void;
   quoteDate: string;
   setQuoteDate: (value: string) => void;
   validUntil: string;
@@ -60,16 +54,10 @@ export default function QuoteForm({
   setProposalTitle,
   solutionOverview,
   setSolutionOverview,
-  clientName,
-  setClientName,
   clientCompany,
   setClientCompany,
-  clientAddress,
-  setClientAddress,
-  clientEmail,
-  setClientEmail,
-  clientPhone,
-  setClientPhone,
+  companyEmail,
+  setCompanyEmail,
   quoteDate,
   setQuoteDate,
   validUntil,
@@ -132,7 +120,7 @@ export default function QuoteForm({
 
       <div className="bg-white rounded-xl shadow-sm border border-purple-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <span className="bg-purple-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">📝</span>
+          <span className="bg-purple-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">2</span>
           Tiêu Đề Các Trang
         </h2>
         <div className="space-y-4">
@@ -291,47 +279,25 @@ export default function QuoteForm({
               placeholder="ABC Corporation"
             />
           </div>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-xl shadow-sm border border-orange-200 p-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <span className="bg-orange-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">📧</span>
+          Thông Tin Công Ty
+        </h2>
+        <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Tên người liên hệ</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Email công ty (hiển thị trên PDF)</label>
             <input
-              type="text"
-              value={clientName}
-              onChange={(e) => setClientName(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              placeholder="Nguyễn Văn A"
+              type="email"
+              value={companyEmail}
+              onChange={(e) => setCompanyEmail(e.target.value)}
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+              placeholder="service@gleadsglobal.com"
             />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Địa chỉ</label>
-            <input
-              type="text"
-              value={clientAddress}
-              onChange={(e) => setClientAddress(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              placeholder="123 Đường ABC, Quận XYZ, TP. HCM"
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-              <input
-                type="email"
-                value={clientEmail}
-                onChange={(e) => setClientEmail(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="contact@company.com"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Số điện thoại</label>
-              <input
-                type="text"
-                value={clientPhone}
-                onChange={(e) => setClientPhone(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="0912 345 678"
-              />
-            </div>
+            <p className="text-xs text-gray-500 mt-1">Email này sẽ hiển thị ở footer của tất cả các trang trong PDF</p>
           </div>
         </div>
       </div>
@@ -366,7 +332,7 @@ export default function QuoteForm({
       <div className="bg-white rounded-xl shadow-sm border border-blue-200 p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-900 flex items-center">
-            <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">4</span>
+            <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">6</span>
             Dịch Vụ
           </h2>
           <button
@@ -470,7 +436,7 @@ export default function QuoteForm({
 
       <div className="bg-white rounded-xl shadow-sm border border-orange-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <span className="bg-orange-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">6</span>
+          <span className="bg-orange-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm mr-2">7</span>
           Thông Tin Chung (Page 4)
         </h2>
         <p className="text-xs text-gray-500 mb-4">

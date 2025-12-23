@@ -5,6 +5,7 @@ interface TermsPage1Props {
     warrantyPolicy: string;
     serviceType: string;
     pageTitle: string;
+    companyEmail: string;
 }
 
 export default function TermsPage1({
@@ -12,6 +13,7 @@ export default function TermsPage1({
     warrantyPolicy,
     serviceType,
     pageTitle,
+    companyEmail,
 }: TermsPage1Props) {
     return (
         <div
@@ -92,7 +94,7 @@ export default function TermsPage1({
             >
                 <div className="flex justify-between items-center text-xs text-gray-600">
                     <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-                    <p>www.gleadsglobal.com | service@gleadsglobal.com</p>
+                    <p>www.gleadsglobal.com | {companyEmail}</p>
                 </div>
             </div>
         </div>
