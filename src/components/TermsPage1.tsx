@@ -1,4 +1,5 @@
 import gleadsLogo from '../assets/gleads logo.webp';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface TermsPage1Props {
     serviceNotes: string;
@@ -15,6 +16,8 @@ export default function TermsPage1({
     pageTitle,
     companyEmail,
 }: TermsPage1Props) {
+    const { t } = useLanguage();
+
     return (
         <div
             className="page-break terms-page w-[210mm] h-[297mm] bg-white"
@@ -42,7 +45,7 @@ export default function TermsPage1({
                             {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
                         </div>
                         <div className="text-right text-xs text-gray-600">
-                            <p>Page 4</p>
+                            <p>{t.termsPage.pageNumber} 4</p>
                         </div>
                     </div>
                 </div>
@@ -59,7 +62,7 @@ export default function TermsPage1({
                     <div className="mb-6">
                         <h3 className="text-xl font-bold text-gray-700 mb-3">
                             <span className="text-gray-700 mr-2">01.</span>
-                            GHI CHÚ VỀ DỊCH VỤ.
+                            {t.termsPage.serviceNotes}
                         </h3>
                         <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{serviceNotes}</p>
                     </div>
@@ -69,7 +72,7 @@ export default function TermsPage1({
                         <div className="mb-6">
                             <h3 className="text-xl font-bold text-gray-700 mb-3">
                                 <span className="text-gray-700 mr-2">02.</span>
-                                CHÍNH SÁCH BẢO HÀNH.
+                                {t.termsPage.warrantyPolicy}
                             </h3>
                             <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{warrantyPolicy}</p>
                         </div>
@@ -93,8 +96,8 @@ export default function TermsPage1({
                 }}
             >
                 <div className="flex justify-between items-center text-xs text-gray-600">
-                    <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-                    <p>www.gleadsglobal.com | {companyEmail}</p>
+                    <p>{t.footer.copyright}</p>
+                    <p>{t.footer.websiteAndEmail} | {companyEmail}</p>
                 </div>
             </div>
         </div>

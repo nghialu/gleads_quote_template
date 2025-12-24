@@ -1,5 +1,6 @@
 import gleadsLogo from '../assets/gleads logo.webp';
 import backgroundImg from '../assets/background.jpg';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface CoverPageProps {
   proposalTitle: string;
@@ -14,6 +15,8 @@ export default function CoverPage({
   clientCompany,
   quoteDate,
 }: CoverPageProps) {
+  const { t } = useLanguage();
+
   return (
     <div
       className="page-break w-[210mm] h-[297mm] relative overflow-hidden"
@@ -59,7 +62,7 @@ export default function CoverPage({
             {/* Prepared For */}
             <div>
               <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
-                QUÝ KHÁCH HÀNG
+                {t.coverPage.client}
               </p>
               <p className="text-gray-900 text-base font-bold">
                 {clientCompany || 'Client Company'}
@@ -69,7 +72,7 @@ export default function CoverPage({
             {/* Date */}
             <div className="text-right">
               <p className="text-gray-900 text-xs font-bold tracking-wide uppercase mb-2">
-                NGÀY BÁO GIÁ
+                {t.coverPage.quoteDate}
               </p>
               <p className="text-gray-900 text-base font-bold">
                 {new Date(quoteDate).toLocaleDateString('en-GB', {

@@ -1,6 +1,9 @@
 import gleadsLogo from '../assets/gleads logo.webp';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function CredibilityPage() {
+    const { t } = useLanguage();
+
     return (
         <div className="page-break w-[210mm] h-[297mm] bg-white p-12 flex flex-col">
             {/* Header */}
@@ -15,7 +18,7 @@ export default function CredibilityPage() {
                         {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
                     </div>
                     <div className="text-right text-xs text-gray-600">
-                        <p>Page 5</p>
+                        <p>{t.credibilityPage.pageNumber} 5</p>
                     </div>
                 </div>
             </div>
@@ -26,9 +29,8 @@ export default function CredibilityPage() {
                 <div className="mb-8">
                     {/* Tagline */}
                     <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6 rounded-lg mb-8 text-center">
-                        <p className="text-base font-bold leading-relaxed tracking-wide">
-                            KHÔNG THEO DÒNG CHẢY THỊ TRƯỜNG – GLEADS TẠO LÀN SÓNG<br />
-                            TRUYỀN THÔNG ĐỘT PHÁ MANG TÊN BẠN.
+                        <p className="text-base font-bold leading-relaxed tracking-wide" style={{ whiteSpace: 'pre-line' }}>
+                            {t.credibilityPage.tagline}
                         </p>
                     </div>
 
@@ -79,7 +81,7 @@ export default function CredibilityPage() {
                 {/* Brand Partners Section */}
                 <div className="mb-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                        ĐỐI TÁC & KHÁCH HÀNG TIN TƯỞNG
+                        {t.credibilityPage.partnersAndClients}
                     </h2>
 
                     {/* Brand Logo Grid Placeholder */}
@@ -99,7 +101,7 @@ export default function CredibilityPage() {
                             ))}
                         </div>
                         <p className="text-center text-xs text-gray-500 mt-4">
-                            Vui lòng thêm logo các brand đã hợp tác vào thư mục assets và cập nhật component
+                            {t.credibilityPage.logoPlaceholder}
                         </p>
                     </div>
                 </div>
@@ -108,9 +110,7 @@ export default function CredibilityPage() {
                 <div className="text-center">
                     <div className="bg-orange-50 border-l-4 p-4 rounded-lg" style={{ borderLeftColor: '#F6581C' }}>
                         <p className="text-sm text-gray-700 leading-relaxed">
-                            <strong className="text-orange-700">GLEADS</strong> tự hào là đối tác tin cậy của hơn 200 doanh nghiệp
-                            trong và ngoài nước. Chúng tôi cam kết mang đến giải pháp marketing hiệu quả,
-                            đo lường được và tăng trưởng bền vững cho mọi thương hiệu.
+                            <strong className="text-orange-700">GLEADS</strong> {t.credibilityPage.trustMessage}
                         </p>
                     </div>
                 </div>

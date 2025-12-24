@@ -1,24 +1,15 @@
 import gleadsLogo from '../assets/gleads logo.webp';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface AboutPageProps {
   aboutGleads: string;
-  serviceType: string;
   pageTitle: string;
   companyEmail: string;
 }
 
-export default function AboutPage({ aboutGleads, serviceType, pageTitle, companyEmail }: AboutPageProps) {
-  const getTitle = () => {
-    if (serviceType === 'website') {
-      return (
-        <>
-          <div>Website tổng quát, GLEADS Website.</div>
-          <div>Dịch vụ website của GLEADS</div>
-        </>
-      );
-    }
-    return 'VỀ GLEADS';
-  };
+export default function AboutPage({ aboutGleads, pageTitle, companyEmail }: AboutPageProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="page-break w-[210mm] h-[297mm] bg-white" style={{ position: 'relative', padding: '48px', boxSizing: 'border-box', overflow: 'visible', display: 'flex', flexDirection: 'column', backgroundColor: '#FDFBF5' }}>
       {/* Header */}
@@ -33,7 +24,7 @@ export default function AboutPage({ aboutGleads, serviceType, pageTitle, company
             {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
           </div>
           <div className="text-right text-xs text-gray-600">
-            <p>Page 2</p>
+            <p>{t.aboutPage.pageNumber} 2</p>
           </div>
         </div>
       </div>
@@ -92,8 +83,8 @@ export default function AboutPage({ aboutGleads, serviceType, pageTitle, company
       {/* Footer - Fixed at bottom */}
       <div style={{ position: 'absolute', bottom: '48px', left: '48px', right: '48px', borderTop: '2px solid #e5e7eb', paddingTop: '12px', zIndex: 10 }}>
         <div className="flex justify-between items-center text-xs text-gray-600">
-          <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-          <p>www.gleadsglobal.com | {companyEmail}</p>
+          <p>{t.footer.copyright}</p>
+          <p>{t.footer.websiteAndEmail} | {companyEmail}</p>
         </div>
       </div>
     </div>

@@ -2,8 +2,12 @@ import { useState, useRef, useEffect } from 'react';
 import { FileText, Download } from 'lucide-react';
 import QuoteForm from './components/QuoteForm';
 import QuotePreview from './components/QuotePreview';
+import { useLanguage } from './contexts/LanguageContext';
+import { serviceTemplatesEN, defaultProposalTitlesEN, defaultSolutionOverviewsEN } from './translations';
 
 function App() {
+  const { language, t } = useLanguage();
+
   // Proposal Details
   const [proposalTitle, setProposalTitle] = useState('BÁO GIÁ GIẢI PHÁP TRUYỀN THÔNG THƯƠNG HIỆU TOÀN DIỆN');
   const [solutionOverview, setSolutionOverview] = useState('Giải pháp Digital Marketing toàn diện giúp nâng tầm hiện diện thương hiệu và thúc đẩy tăng trưởng bền vững thông qua SEO, Quảng cáo Hiệu suất, Content Marketing và Thiết kế Sáng tạo.');
@@ -181,6 +185,78 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
   const [termsPageTitle, setTermsPageTitle] = useState('GHI CHÚ và CHÍNH SÁCH BẢO HÀNH.');
   const [paymentPageTitle, setPaymentPageTitle] = useState('THANH TOÁN và XÁC NHẬN.');
 
+  // Update content when language changes
+  useEffect(() => {
+    // Update proposal title based on service type
+    const titleKey = serviceType as keyof typeof defaultProposalTitlesEN;
+    if (language === 'en') {
+      setProposalTitle(defaultProposalTitlesEN[titleKey] || defaultProposalTitlesEN.custom);
+      setSolutionOverview(defaultSolutionOverviewsEN[titleKey] || defaultSolutionOverviewsEN.custom);
+
+      // Update page titles
+      setAboutPageTitle('ABOUT GLEADS');
+      setQuotePageTitle('DETAILED QUOTATION');
+      setTermsPageTitle('SERVICE NOTES & WARRANTY POLICY');
+      setPaymentPageTitle('PAYMENT & CONFIRMATION');
+
+      // Update templates if not custom
+      if (serviceType !== 'custom') {
+        const template = serviceTemplatesEN[serviceType as keyof typeof serviceTemplatesEN];
+        setAboutGleads(template.aboutGleads);
+        setServiceNotes(template.serviceNotes);
+        setWarrantyPolicy(template.warrantyPolicy);
+      } else {
+        setAboutGleads('GLEADS is a comprehensive communications and marketing company, providing creative and effective strategic solutions for brands. We bring together a team of experienced experts, always partnering with businesses in building image and enhancing brand awareness.');
+        setServiceNotes('GLEADS is committed to providing professional, transparent, and highly effective services. Our team of experts will accompany your business throughout the entire project implementation process.');
+        setWarrantyPolicy('• Technical warranty for 12 months\n• Free bug fixes and updates\n• Consultation and usage training');
+      }
+
+      // Update payment terms and bank info
+      setPaymentTerms('• Phase 1: 40% upon contract signing\n• Phase 2: 30% upon 50% project completion\n• Phase 3: 30% upon acceptance and handover');
+      setBankInfo('Bank: Techcombank, Phu My Hung Branch\nAccount Name: GLEADS COMPANY LIMITED\nAccount Number: 1913 2044 509 568');
+    } else {
+      // Vietnamese
+      const viTitles = {
+        content: 'BÁO GIÁ GIẢI PHÁP TRUYỀN THÔNG THƯƠNG HIỆU TOÀN DIỆN',
+        design: 'BÁO GIÁ DỊCH VỤ THIẾT KẾ CHUYÊN NGHIỆP',
+        website: 'BÁO GIÁ GIẢI PHÁP PHÁT TRIỂN WEBSITE',
+        custom: 'BÁO GIÁ GIẢI PHÁP TRUYỀN THÔNG THƯƠNG HIỆU TOÀN DIỆN'
+      };
+
+      const viOverviews = {
+        content: 'Giải pháp Digital Marketing toàn diện giúp nâng tầm hiện diện thương hiệu và thúc đẩy tăng trưởng bền vững thông qua SEO, Quảng cáo Hiệu suất, Content Marketing và Thiết kế Sáng tạo.',
+        design: 'Dịch vụ thiết kế đồ họa chuyên nghiệp mang đến giải pháp hình ảnh hiện đại, ấn tượng, nâng cao nhận diện thương hiệu và tương tác khách hàng trên mọi nền tảng số.',
+        website: 'Giải pháp phát triển website hoàn chỉnh với thiết kế hiện đại, giao diện thân thiện, tối ưu SEO và tích hợp đầy đủ tính năng để tăng cường hiện diện trực tuyến và phát triển kinh doanh.',
+        custom: 'Giải pháp Digital Marketing toàn diện giúp nâng tầm hiện diện thương hiệu và thúc đẩy tăng trưởng bền vững thông qua SEO, Quảng cáo Hiệu suất, Content Marketing và Thiết kế Sáng tạo.'
+      };
+
+      setProposalTitle(viTitles[titleKey] || viTitles.custom);
+      setSolutionOverview(viOverviews[titleKey] || viOverviews.custom);
+
+      // Update page titles
+      setAboutPageTitle('VỀ GLEADS');
+      setQuotePageTitle('BÁO GIÁ CHI TIẾT.');
+      setTermsPageTitle('GHI CHÚ và CHÍNH SÁCH BẢO HÀNH.');
+      setPaymentPageTitle('THANH TOÁN và XÁC NHẬN.');
+
+      // Update templates if not custom
+      if (serviceType !== 'custom') {
+        const template = serviceTemplates[serviceType as keyof typeof serviceTemplates];
+        setAboutGleads(template.aboutGleads);
+        setServiceNotes(template.serviceNotes);
+        setWarrantyPolicy(template.warrantyPolicy);
+      } else {
+        setAboutGleads('GLEADS là công ty truyền thông và marketing tổng hợp, cung cấp các giải pháp sáng tạo và chiến lược hiệu quả cho các thương hiệu. Chúng tôi tập hợp đội ngũ chuyên gia giàu kinh nghiệm, luôn đồng hành cùng doanh nghiệp trong việc xây dựng hình ảnh và nâng cao nhận diện thương hiệu.');
+        setServiceNotes('GLEADS cam kết cung cấp dịch vụ chuyên nghiệp, minh bạch và hiệu quả cao. Đội ngũ chuyên gia của chúng tôi sẽ đồng hành cùng doanh nghiệp trong suốt quá trình thực hiện dự án.');
+        setWarrantyPolicy('• Bảo hành kỹ thuật trong vòng 12 tháng\n• Hỗ trợ sửa lỗi và cập nhật miễn phí\n• Tư vấn và training sử dụng');
+      }
+
+      // Update payment terms and bank info
+      setPaymentTerms('• Đợt 1: 40% khi ký hợp đồng\n• Đợt 2: 30% khi hoàn thành 50% dự án\n• Đợt 3: 30% khi nghiệm thu và bàn giao');
+      setBankInfo('Ngân hàng: Techcombank, chi nhánh Phú Mỹ Hưng\nTên tài khoản: CÔNG TY CỔ PHẦN GLEADS\nSố tài khoản: 1913 2044 509 568');
+    }
+  }, [language, serviceType]);
+
   // Handle service type change
   const handleServiceTypeChange = (type: string) => {
     setServiceType(type);
@@ -333,7 +409,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
               className="flex items-center gap-2 px-6 py-2.5 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium shadow-lg"
             >
               <Download className="w-5 h-5" />
-              Tải PDF
+              {t.form.downloadPDF}
             </button>
           </div>
         </div>

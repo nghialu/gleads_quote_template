@@ -1,4 +1,5 @@
 import gleadsLogo from '../assets/gleads logo.webp';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Item {
   id: number;
@@ -21,74 +22,86 @@ interface QuotePageProps {
 }
 
 // Table header component for reuse across pages
-const TableHeader = () => (
-  <thead>
-    <tr style={{ background: '#F6581C' }}>
-      <th
-        className="text-left p-3 font-bold border"
-        style={{ width: '50%', borderColor: '#F6581C' }}
-      >
-        THÔNG TIN DỊCH VỤ
-        {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Service Information</div> */}
-      </th>
-      <th
-        className="text-center p-3 font-bold border"
-        style={{ width: '25%', borderColor: '#F6581C' }}
-      >
-        THỜI GIAN
-        {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Timeline</div> */}
-      </th>
-      <th
-        className="text-right p-3 font-bold border"
-        style={{ width: '25%', borderColor: '#F6581C' }}
-      >
-        CHI PHÍ (VNĐ)
-        {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Cost</div> */}
-      </th>
-    </tr>
-  </thead>
-);
+const TableHeader = () => {
+  const { t } = useLanguage();
+
+  return (
+    <thead>
+      <tr style={{ background: '#F6581C' }}>
+        <th
+          className="text-left p-3 font-bold border"
+          style={{ width: '50%', borderColor: '#F6581C' }}
+        >
+          {t.quotePage.serviceInfo}
+          {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Service Information</div> */}
+        </th>
+        <th
+          className="text-center p-3 font-bold border"
+          style={{ width: '25%', borderColor: '#F6581C' }}
+        >
+          {t.quotePage.timeline}
+          {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Timeline</div> */}
+        </th>
+        <th
+          className="text-right p-3 font-bold border"
+          style={{ width: '25%', borderColor: '#F6581C' }}
+        >
+          {t.quotePage.cost}
+          {/* <div className="text-xs font-normal mt-0.5" style={{ color: '#FFE5D1' }}>Cost</div> */}
+        </th>
+      </tr>
+    </thead>
+  );
+};
 
 // Component for page header
-const PageHeader = ({ pageNum }: { pageNum: number }) => (
-  <div className="mb-6">
-    <div className="flex justify-between items-center border-b-2 pb-3" style={{ borderBottomColor: '#F6581C' }}>
-      <div>
-        <img
-          src={gleadsLogo}
-          alt="Gleads Logo"
-          className="h-8 w-auto"
-        />
-        {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
-      </div>
-      <div className="text-right text-xs text-gray-600">
-        <p>Page {pageNum}</p>
+const PageHeader = ({ pageNum }: { pageNum: number }) => {
+  const { t } = useLanguage();
+
+  return (
+    <div className="mb-6">
+      <div className="flex justify-between items-center border-b-2 pb-3" style={{ borderBottomColor: '#F6581C' }}>
+        <div>
+          <img
+            src={gleadsLogo}
+            alt="Gleads Logo"
+            className="h-8 w-auto"
+          />
+          {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
+        </div>
+        <div className="text-right text-xs text-gray-600">
+          <p>{t.quotePage.pageNumber} {pageNum}</p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Component for table row
-const TableRow = ({ item, index }: { item: Item; index: number }) => (
-  <tr className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
-    <td className="p-3 border border-gray-300 align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
-      <p className="font-bold text-gray-900 mb-1 text-sm" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-        {item.service || `Dịch vụ ${index + 1}`}
-      </p>
-      <p className="text-xs text-gray-600 leading-relaxed" style={{ wordWrap: 'break-word', overflowWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
-        {item.description || 'Mô tả dịch vụ chi tiết'}
-      </p>
-    </td>
-    <td className="p-3 border border-gray-300 text-center align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-      <p className="text-gray-900 text-sm">{item.timeline || 'Không có'}</p>
-    </td>
-    <td className="p-3 border border-gray-300 text-right align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-      <p className="font-bold text-gray-900 text-sm">
-        {Number(item.cost || 0).toLocaleString('vi-VN')}
-      </p>
-    </td>
-  </tr>
-);
+const TableRow = ({ item, index }: { item: Item; index: number }) => {
+  const { t } = useLanguage();
+
+  return (
+    <tr className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
+      <td className="p-3 border border-gray-300 align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
+        <p className="font-bold text-gray-900 mb-1 text-sm" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+          {item.service || `${t.form.serviceName} ${index + 1}`}
+        </p>
+        <p className="text-xs text-gray-600 leading-relaxed" style={{ wordWrap: 'break-word', overflowWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
+          {item.description || t.form.description}
+        </p>
+      </td>
+      <td className="p-3 border border-gray-300 text-center align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+        <p className="text-gray-900 text-sm">{item.timeline || t.quotePage.noValue}</p>
+      </td>
+      <td className="p-3 border border-gray-300 text-right align-top" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+        <p className="font-bold text-gray-900 text-sm">
+          {Number(item.cost || 0).toLocaleString('vi-VN')}
+        </p>
+      </td>
+    </tr>
+  );
+};
 
 export default function QuotePage({
   quoteDate,
@@ -99,6 +112,8 @@ export default function QuotePage({
   pageTitle,
   companyEmail,
 }: QuotePageProps) {
+  const { t } = useLanguage();
+
   // Constants for page layout (in mm)
   const PAGE_HEIGHT_MM = 297;
   const PADDING_MM = 12.7; // 48px ≈ 12.7mm
@@ -192,11 +207,11 @@ export default function QuotePage({
             {/* Quote Info */}
             <div className="grid grid-cols-3 gap-4 mb-5">
               <div className="bg-gray-50 p-3 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Khách hàng</p>
-                <p className="font-bold text-gray-900 text-sm">{clientCompany || 'Tên công ty'}</p>
+                <p className="text-xs text-gray-600 mb-1">{t.quotePage.customer}</p>
+                <p className="font-bold text-gray-900 text-sm">{clientCompany || 'Company Name'}</p>
               </div>
               <div className="bg-gray-50 p-3 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Ngày báo giá</p>
+                <p className="text-xs text-gray-600 mb-1">{t.quotePage.quoteDate}</p>
                 <p className="font-bold text-gray-900 text-sm">
                   {new Date(quoteDate).toLocaleDateString('vi-VN', {
                     day: '2-digit',
@@ -206,7 +221,7 @@ export default function QuotePage({
                 </p>
               </div>
               <div className="bg-gray-50 p-3 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Hiệu lực đến</p>
+                <p className="text-xs text-gray-600 mb-1">{t.quotePage.validUntil}</p>
                 <p className="font-bold text-gray-900 text-sm">
                   {validUntil
                     ? new Date(validUntil).toLocaleDateString('vi-VN', {
@@ -214,7 +229,7 @@ export default function QuotePage({
                       month: '2-digit',
                       year: 'numeric',
                     })
-                    : 'Không có'}
+                    : t.quotePage.noValue}
                 </p>
               </div>
             </div>
@@ -252,23 +267,23 @@ export default function QuotePage({
                         <>
                           <tr className="bg-gray-50" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
                             <td className="p-3 border border-gray-300 font-semibold text-gray-900" colSpan={2}>
-                              Tổng trước chiết khấu
-                              <div className="text-xs font-normal text-gray-600">Subtotal</div>
+                              {t.quotePage.subtotalBeforeDiscount}
+                              <div className="text-xs font-normal text-gray-600">{t.quotePage.subtotal}</div>
                             </td>
                             <td className="p-3 border border-gray-300 text-right">
                               <p className="font-semibold text-gray-900 text-sm">
-                                {subtotal.toLocaleString('vi-VN')} VNĐ
+                                {subtotal.toLocaleString('vi-VN')} {t.quotePage.vnd}
                               </p>
                             </td>
                           </tr>
                           <tr className="bg-red-50" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
                             <td className="p-3 border border-gray-300 font-semibold text-gray-900" colSpan={2}>
-                              Chiết khấu
+                              {t.quotePage.discount}
                               <div className="text-xs font-normal text-gray-600">Discount</div>
                             </td>
                             <td className="p-3 border border-gray-300 text-right">
                               <p className="font-semibold text-red-600 text-sm">
-                                -{totalDiscount.toLocaleString('vi-VN')} VNĐ
+                                -{totalDiscount.toLocaleString('vi-VN')} {t.quotePage.vnd}
                               </p>
                             </td>
                           </tr>
@@ -276,12 +291,12 @@ export default function QuotePage({
                       )}
                       <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 total-row" style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}>
                         <td className="p-3 border border-gray-300 font-bold text-gray-900" colSpan={2}>
-                          TỔNG CHI PHÍ DỰ KIẾN
+                          {t.quotePage.totalEstimatedCost}
                           {/* <div className="text-xs font-normal text-gray-600">Total Estimated Cost</div> */}
                         </td>
                         <td className="p-3 border border-gray-300 text-right">
                           <p className="text-xl font-bold text-black">
-                            {total.toLocaleString('vi-VN')} VNĐ
+                            {total.toLocaleString('vi-VN')} {t.quotePage.vnd}
                           </p>
                         </td>
                       </tr>
@@ -309,8 +324,8 @@ export default function QuotePage({
           }}
         >
           <div className="flex justify-between items-center text-xs text-gray-600">
-            <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-            <p>www.gleadsglobal.com | {companyEmail}</p>
+            <p>{t.footer.copyright}</p>
+            <p>{t.footer.websiteAndEmail} | {companyEmail}</p>
           </div>
         </div>
       </div>

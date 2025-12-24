@@ -1,4 +1,5 @@
 import gleadsLogo from '../assets/gleads logo.webp';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface TermsPage2Props {
     paymentTerms: string;
@@ -13,6 +14,8 @@ export default function TermsPage2({
     pageTitle,
     companyEmail,
 }: TermsPage2Props) {
+    const { t } = useLanguage();
+
     return (
         <div
             className="page-break terms-page w-[210mm] h-[297mm] bg-white"
@@ -40,7 +43,7 @@ export default function TermsPage2({
                             {/* <p className="text-xs text-gray-600">Marketing & Communications Agency</p> */}
                         </div>
                         <div className="text-right text-xs text-gray-600">
-                            <p>Page 5</p>
+                            <p>{t.paymentPage.pageNumber} 5</p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +60,7 @@ export default function TermsPage2({
                     <div className="mb-6">
                         <h3 className="text-xl font-bold text-gray-700 mb-3">
                             <span className="text-gray-700 mr-2">01.</span>
-                            PHƯƠNG THỨC THANH TOÁN
+                            {t.paymentPage.paymentMethod}
                         </h3>
                         <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{paymentTerms}</p>
                     </div>
@@ -66,7 +69,7 @@ export default function TermsPage2({
                     <div className="mb-6">
                         <h3 className="text-xl font-bold text-gray-700 mb-3">
                             <span className="text-gray-700 mr-2">02.</span>
-                            THÔNG TIN TÀI KHOẢN NGÂN HÀNG
+                            {t.paymentPage.bankInfo}
                         </h3>
                         <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{bankInfo}</p>
                     </div>
@@ -74,25 +77,25 @@ export default function TermsPage2({
                     {/* Signature Section */}
                     <div className="mt-8 pt-6 border-t-2 border-gray-300">
                         <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
-                            XÁC NHẬN & KÝ KẾT
+                            {t.paymentPage.confirmationAndSigning}
                         </h3>
                         <div className="grid grid-cols-2 gap-8">
                             {/* Client Signature */}
                             <div className="text-center">
                                 <div className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-6 mb-3 h-32 flex items-center justify-center shadow-sm">
-                                    <p className="text-gray-400 text-sm">Chữ ký khách hàng</p>
+                                    <p className="text-gray-400 text-sm">{t.paymentPage.clientSignature}</p>
                                 </div>
-                                <p className="font-bold text-gray-900 text-sm">XÁC NHẬN CỦA KHÁCH HÀNG</p>
-                                <p className="text-xs text-gray-600 mt-1">(Ký và ghi rõ họ tên)</p>
+                                <p className="font-bold text-gray-900 text-sm">{t.paymentPage.clientConfirmation}</p>
+                                <p className="text-xs text-gray-600 mt-1">{t.paymentPage.signAndPrint}</p>
                             </div>
 
                             {/* Company Signature */}
                             <div className="text-center">
                                 <div className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-6 mb-3 h-32 flex items-center justify-center shadow-sm">
-                                    <p className="text-gray-400 text-sm">Chữ ký & đóng dấu</p>
+                                    <p className="text-gray-400 text-sm">{t.paymentPage.companySignature}</p>
                                 </div>
-                                <p className="font-bold text-gray-900 text-sm">ĐẠI DIỆN CÔNG TY CỔ PHẦN GLEADS</p>
-                                <p className="text-xs text-gray-600 mt-1">(Ký và đóng dấu)</p>
+                                <p className="font-bold text-gray-900 text-sm">{t.paymentPage.companyRepresentative}</p>
+                                <p className="text-xs text-gray-600 mt-1">{t.paymentPage.signAndStamp}</p>
                             </div>
                         </div>
                     </div>
@@ -115,8 +118,8 @@ export default function TermsPage2({
                 }}
             >
                 <div className="flex justify-between items-center text-xs text-gray-600">
-                    <p>© 2025 GLEADS Pte. Ltd. All rights reserved.</p>
-                    <p>www.gleadsglobal.com | {companyEmail}</p>
+                    <p>{t.footer.copyright}</p>
+                    <p>{t.footer.websiteAndEmail} | {companyEmail}</p>
                 </div>
             </div>
         </div>

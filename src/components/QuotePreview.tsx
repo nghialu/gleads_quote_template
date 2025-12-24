@@ -68,7 +68,7 @@ const QuotePreview = forwardRef<HTMLDivElement, QuotePreviewProps>(function Quot
       />
 
       {/* Page 2: About Gleads - Only show if content exists */}
-      {aboutGleads && <AboutPage aboutGleads={aboutGleads} serviceType={serviceType} pageTitle={aboutPageTitle} companyEmail={companyEmail} />}
+      {aboutGleads && <AboutPage aboutGleads={aboutGleads} pageTitle={aboutPageTitle} companyEmail={companyEmail} />}
 
       {/* Page 3: Quote Details */}
       <QuotePage
