@@ -196,7 +196,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
       // Update page titles
       setAboutPageTitle('ABOUT GLEADS');
       setQuotePageTitle('DETAILED QUOTATION');
-      setTermsPageTitle('SERVICE NOTES & WARRANTY POLICY');
+      setTermsPageTitle('SERVICE NOTES AND WARRANTY POLICY');
       setPaymentPageTitle('PAYMENT & CONFIRMATION');
 
       // Update templates if not custom

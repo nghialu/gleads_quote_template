@@ -282,7 +282,7 @@ export const translations: Record<Language, Translations> = {
             pageNumber: 'Page',
         },
         termsPage: {
-            pageTitle: 'SERVICE NOTES & WARRANTY POLICY',
+            pageTitle: 'SERVICE NOTES AND WARRANTY POLICY',
             serviceNotes: 'SERVICE NOTES',
             warrantyPolicy: 'WARRANTY POLICY',
             pageNumber: 'Page',
