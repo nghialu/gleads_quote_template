@@ -46,8 +46,8 @@ export default function AboutPage({ aboutGleads, pageTitle, companyEmail }: Abou
                 .map(paragraph => {
                   const trimmed = paragraph.trim();
 
-                  // H1: ALL CAPS lines at start of paragraph
-                  if (trimmed.match(/^[A-ZĐÀÁẢÃẠĂẰẮẲẴẶÂẦẤẨẪẬÈÉẺẼẸÊỀẾỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ\s,\.]+$/)) {
+                  // H1: ALL CAPS lines at start of paragraph (including hyphens)
+                  if (trimmed.match(/^[A-ZĐÀÁẢÃẠĂẰẮẲẴẶÂẦẤẨẪẬÈÉẺẼẸÊỀẾỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ\s,\.\-]+$/)) {
                     return `<h3 class="text-lg font-black text-gray-700 mb-3 mt-5 tracking-wide">${trimmed}</h3>`;
                   }
 
