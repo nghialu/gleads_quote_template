@@ -112,7 +112,7 @@ export default function QuoteForm({
                   : 'text-white hover:bg-white hover:bg-opacity-10'
                 }`}
             >
-              🇻🇳 Tiếng Việt
+              VN Tiếng Việt
             </button>
             <button
               onClick={() => setLanguage('en')}
@@ -121,7 +121,7 @@ export default function QuoteForm({
                   : 'text-white hover:bg-white hover:bg-opacity-10'
                 }`}
             >
-              🇬🇧 English
+              EN English
             </button>
           </div>
         </div>
