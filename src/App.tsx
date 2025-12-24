@@ -213,7 +213,7 @@ GLEADS thực hiện quy trình triển khai bài bản đảm bảo nhà hàng 
 
       // Update payment terms and bank info
       setPaymentTerms('• Phase 1: 40% upon contract signing\n• Phase 2: 30% upon 50% project completion\n• Phase 3: 30% upon acceptance and handover');
-      setBankInfo('Bank: Techcombank, Phu My Hung Branch\nAccount Name: GLEADS COMPANY LIMITED\nAccount Number: 1913 2044 509 568');
+      setBankInfo('Bank: Community Federal Savings Bank\nAccount Name: GLEADS PTE. LTD.\nAccount Number: 8312277214');
     } else {
       // Vietnamese
       const viTitles = {
